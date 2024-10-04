@@ -1,15 +1,20 @@
 package Debt;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.Color;
 import java.awt.Dimension;
+
 
 
 public final class DebtFrame extends javax.swing.JFrame {
 
-    boolean isOpenMenu = false;
+  
     public DebtFrame() {
         initComponents();
         DesignComponents();
+        dashboard_button.setBackground(new Color(51,51,51));
+        
+ 
     
 
     }
@@ -20,18 +25,18 @@ public final class DebtFrame extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        menu_button = new Components.CustomButton(this);
         bottomPanel = new javax.swing.JPanel();
         menuPanel = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        dashboard_button = new Components.CustomButton(this);
+        unpaid_button = new Components.CustomButton(this);
+        paid_button = new Components.CustomButton(this);
+        add_customer_button = new Components.CustomButton(this);
+        transactions_button = new Components.CustomButton(this);
+        users_button = new Components.CustomButton(this);
+        export_import_button = new Components.CustomButton(this);
+        settings_button = new Components.CustomButton(this);
+        logout_button = new Components.CustomButton(this);
         tabbedPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -46,13 +51,16 @@ public final class DebtFrame extends javax.swing.JFrame {
 
         topPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
 
-        jButton1.setText("Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        menu_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        menu_button.setText("Menu");
+        menu_button.setBorderPainted(false);
+        menu_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                menu_buttonActionPerformed(evt);
             }
         });
-        topPanel.add(jButton1);
+        topPanel.add(menu_button);
 
         background.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -60,83 +68,92 @@ public final class DebtFrame extends javax.swing.JFrame {
 
         menuPanel.setPreferredSize(new java.awt.Dimension(200, 567));
 
-        jButton5.setText("Dashboard");
-        jButton5.setBorderPainted(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setOpaque(false);
-        jButton5.setPreferredSize(new java.awt.Dimension(190, 35));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        dashboard_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        dashboard_button.setText("Dashboard");
+        dashboard_button.setBorderPainted(false);
+        dashboard_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dashboard_button.setOpaque(false);
+        dashboard_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        dashboard_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                dashboard_buttonActionPerformed(evt);
             }
         });
-        menuPanel.add(jButton5);
+        menuPanel.add(dashboard_button);
 
-        jButton6.setText("Unpaid customer");
-        jButton6.setBorderPainted(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.setOpaque(false);
-        jButton6.setPreferredSize(new java.awt.Dimension(190, 35));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        unpaid_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        unpaid_button.setText("Unpaid customer");
+        unpaid_button.setBorderPainted(false);
+        unpaid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        unpaid_button.setOpaque(false);
+        unpaid_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        unpaid_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                unpaid_buttonActionPerformed(evt);
             }
         });
-        menuPanel.add(jButton6);
+        menuPanel.add(unpaid_button);
 
-        jButton7.setText("Paid cutomer");
-        jButton7.setBorderPainted(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setOpaque(false);
-        jButton7.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(jButton7);
+        paid_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        paid_button.setText("Paid cutomer");
+        paid_button.setBorderPainted(false);
+        paid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        paid_button.setOpaque(false);
+        paid_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(paid_button);
 
-        jButton8.setText("Add customer");
-        jButton8.setBorderPainted(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setOpaque(false);
-        jButton8.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(jButton8);
+        add_customer_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        add_customer_button.setText("Add customer");
+        add_customer_button.setBorderPainted(false);
+        add_customer_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add_customer_button.setOpaque(false);
+        add_customer_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(add_customer_button);
 
-        jButton9.setText("Transactions");
-        jButton9.setBorderPainted(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setOpaque(false);
-        jButton9.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(jButton9);
+        transactions_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        transactions_button.setText("Transactions");
+        transactions_button.setBorderPainted(false);
+        transactions_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transactions_button.setOpaque(false);
+        transactions_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(transactions_button);
 
-        jButton12.setText("Users");
-        jButton12.setBorderPainted(false);
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.setOpaque(false);
-        jButton12.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(jButton12);
+        users_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        users_button.setText("Users");
+        users_button.setBorderPainted(false);
+        users_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        users_button.setOpaque(false);
+        users_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(users_button);
 
-        jButton4.setText("Export/Import");
-        jButton4.setBorderPainted(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setOpaque(false);
-        jButton4.setPreferredSize(new java.awt.Dimension(190, 35));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        export_import_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        export_import_button.setText("Export/Import");
+        export_import_button.setBorderPainted(false);
+        export_import_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        export_import_button.setOpaque(false);
+        export_import_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        export_import_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                export_import_buttonActionPerformed(evt);
             }
         });
-        menuPanel.add(jButton4);
+        menuPanel.add(export_import_button);
 
-        jButton11.setText("Settings");
-        jButton11.setBorderPainted(false);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton11.setOpaque(false);
-        jButton11.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(jButton11);
+        settings_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        settings_button.setText("Settings");
+        settings_button.setBorderPainted(false);
+        settings_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        settings_button.setOpaque(false);
+        settings_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(settings_button);
 
-        jButton10.setText("Logout");
-        jButton10.setBorderPainted(false);
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.setOpaque(false);
-        jButton10.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(jButton10);
+        logout_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        logout_button.setText("Logout");
+        logout_button.setBorderPainted(false);
+        logout_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_button.setOpaque(false);
+        logout_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(logout_button);
 
         bottomPanel.add(menuPanel, java.awt.BorderLayout.LINE_START);
 
@@ -203,32 +220,23 @@ public final class DebtFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        if(isOpenMenu==false){
-                 menuPanel.setPreferredSize(new Dimension(200, Integer.MAX_VALUE));
-                 isOpenMenu=true;
-        }else{
-            menuPanel.setPreferredSize(new Dimension(1, 1));
-            isOpenMenu =false;
-        }
-   
-        
-        menuPanel.repaint();
-        menuPanel.revalidate();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void menu_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_buttonActionPerformed
+       ServiceMethod.Handle.ToggleMenu(menuPanel);
+    }//GEN-LAST:event_menu_buttonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void dashboard_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_buttonActionPerformed
         tabbedPane.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+    }//GEN-LAST:event_dashboard_buttonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void unpaid_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unpaid_buttonActionPerformed
         tabbedPane.setSelectedIndex(1);
-    }//GEN-LAST:event_jButton6ActionPerformed
+     
+    }//GEN-LAST:event_unpaid_buttonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void export_import_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_export_import_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_export_import_buttonActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -239,33 +247,38 @@ public final class DebtFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_customer_button;
     private javax.swing.JPanel background;
     private javax.swing.JPanel bottomPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton dashboard_button;
+    private javax.swing.JButton export_import_button;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logout_button;
     private javax.swing.JPanel menuPanel;
+    private javax.swing.JButton menu_button;
+    private javax.swing.JButton paid_button;
+    private javax.swing.JButton settings_button;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table_dashboard;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JButton transactions_button;
+    private javax.swing.JButton unpaid_button;
+    private javax.swing.JButton users_button;
     // End of variables declaration//GEN-END:variables
 
+    
+ 
+    
 void DesignComponents(){
         Components.CustomTable.Design(table_dashboard);
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
+        
+      
 }
 
 }
