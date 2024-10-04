@@ -3,19 +3,19 @@ package Debt;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.Color;
 import java.awt.Dimension;
-
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 public final class DebtFrame extends javax.swing.JFrame {
 
-  
+    int i;
+
     public DebtFrame() {
         initComponents();
         DesignComponents();
-        dashboard_button.setBackground(new Color(51,51,51));
-        
- 
-    
+
+        dashboard_button.setBackground(new Color(51, 51, 51));
 
     }
 
@@ -44,6 +44,12 @@ public final class DebtFrame extends javax.swing.JFrame {
         table_dashboard = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +106,11 @@ public final class DebtFrame extends javax.swing.JFrame {
         paid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         paid_button.setOpaque(false);
         paid_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        paid_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paid_buttonActionPerformed(evt);
+            }
+        });
         menuPanel.add(paid_button);
 
         add_customer_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -182,8 +193,23 @@ public final class DebtFrame extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_dashboard.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table_dashboard);
+        if (table_dashboard.getColumnModel().getColumnCount() > 0) {
+            table_dashboard.getColumnModel().getColumn(0).setResizable(false);
+            table_dashboard.getColumnModel().getColumn(1).setResizable(false);
+            table_dashboard.getColumnModel().getColumn(2).setResizable(false);
+            table_dashboard.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -210,6 +236,84 @@ public final class DebtFrame extends javax.swing.JFrame {
 
         tabbedPane.addTab("tab2", jPanel2);
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab3", jPanel4);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab4", jPanel5);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab5", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab6", jPanel7);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab7", jPanel8);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("tab8", jPanel9);
+
         bottomPanel.add(tabbedPane, java.awt.BorderLayout.CENTER);
 
         background.add(bottomPanel, java.awt.BorderLayout.CENTER);
@@ -221,22 +325,26 @@ public final class DebtFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menu_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_buttonActionPerformed
-       ServiceMethod.Handle.ToggleMenu(menuPanel);
+        ServiceMethod.Handle.ToggleMenu(menuPanel);
     }//GEN-LAST:event_menu_buttonActionPerformed
 
     private void dashboard_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_buttonActionPerformed
-        tabbedPane.setSelectedIndex(0);
-        
+
+
     }//GEN-LAST:event_dashboard_buttonActionPerformed
 
     private void unpaid_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unpaid_buttonActionPerformed
-        tabbedPane.setSelectedIndex(1);
-     
+
+
     }//GEN-LAST:event_unpaid_buttonActionPerformed
 
     private void export_import_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_export_import_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_export_import_buttonActionPerformed
+
+    private void paid_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paid_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paid_buttonActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -256,6 +364,12 @@ public final class DebtFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel menuPanel;
@@ -270,15 +384,24 @@ public final class DebtFrame extends javax.swing.JFrame {
     private javax.swing.JButton users_button;
     // End of variables declaration//GEN-END:variables
 
-    
- 
-    
-void DesignComponents(){
+    void DesignComponents() {
         Components.CustomTable.Design(table_dashboard);
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
-        
-      
-}
+        table_dashboard.setBackground(getBackground());
+
+        JButton buttons[]
+                = {
+                    dashboard_button,
+                    unpaid_button,
+                    paid_button,
+                    add_customer_button,
+                    transactions_button,
+                    users_button,
+                    export_import_button,
+                    settings_button,};
+        ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this);
+
+    }
 
 }
