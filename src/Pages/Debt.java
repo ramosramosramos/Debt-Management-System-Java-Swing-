@@ -70,12 +70,12 @@ String acoount;
         jPanel10 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_debts = new javax.swing.JTable();
+        table_unpaid_debts = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table_dashboard2 = new javax.swing.JTable();
+        table_paid_debts = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -517,7 +517,7 @@ String acoount;
 
         jPanel2.add(jPanel10, java.awt.BorderLayout.PAGE_START);
 
-        table_debts.setModel(new javax.swing.table.DefaultTableModel(
+        table_unpaid_debts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -536,13 +536,13 @@ String acoount;
                 return canEdit [columnIndex];
             }
         });
-        table_debts.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(table_debts);
-        if (table_debts.getColumnModel().getColumnCount() > 0) {
-            table_debts.getColumnModel().getColumn(0).setResizable(false);
-            table_debts.getColumnModel().getColumn(1).setResizable(false);
-            table_debts.getColumnModel().getColumn(2).setResizable(false);
-            table_debts.getColumnModel().getColumn(3).setResizable(false);
+        table_unpaid_debts.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(table_unpaid_debts);
+        if (table_unpaid_debts.getColumnModel().getColumnCount() > 0) {
+            table_unpaid_debts.getColumnModel().getColumn(0).setResizable(false);
+            table_unpaid_debts.getColumnModel().getColumn(1).setResizable(false);
+            table_unpaid_debts.getColumnModel().getColumn(2).setResizable(false);
+            table_unpaid_debts.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -557,7 +557,7 @@ String acoount;
 
         jPanel4.add(jPanel11, java.awt.BorderLayout.PAGE_START);
 
-        table_dashboard2.setModel(new javax.swing.table.DefaultTableModel(
+        table_paid_debts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -576,13 +576,13 @@ String acoount;
                 return canEdit [columnIndex];
             }
         });
-        table_dashboard2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(table_dashboard2);
-        if (table_dashboard2.getColumnModel().getColumnCount() > 0) {
-            table_dashboard2.getColumnModel().getColumn(0).setResizable(false);
-            table_dashboard2.getColumnModel().getColumn(1).setResizable(false);
-            table_dashboard2.getColumnModel().getColumn(2).setResizable(false);
-            table_dashboard2.getColumnModel().getColumn(3).setResizable(false);
+        table_paid_debts.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(table_paid_debts);
+        if (table_paid_debts.getColumnModel().getColumnCount() > 0) {
+            table_paid_debts.getColumnModel().getColumn(0).setResizable(false);
+            table_paid_debts.getColumnModel().getColumn(1).setResizable(false);
+            table_paid_debts.getColumnModel().getColumn(2).setResizable(false);
+            table_paid_debts.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel4.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -903,10 +903,10 @@ String acoount;
     private javax.swing.JButton paid_button;
     private javax.swing.JButton settings_button;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTable table_dashboard2;
     private javax.swing.JTable table_dashboard3;
     private javax.swing.JTable table_dashboard4;
-    private javax.swing.JTable table_debts;
+    private javax.swing.JTable table_paid_debts;
+    private javax.swing.JTable table_unpaid_debts;
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
@@ -947,7 +947,8 @@ String acoount;
     }
     
     void updateDebts(){
-        Services.Debts.UnpaidDebts(table_debts);
+        Services.Debts.UnpaidDebts(table_unpaid_debts);
+        Services.Debts.PaidDebts(table_paid_debts);
     }
     
     
