@@ -74,6 +74,10 @@ public class Handle {
                         tabbedPane.setSelectedIndex(7);
                         buttons[7].setBackground(new Color(51, 51, 51));
                     }
+                   else if (buttonText.contains("account")) {
+                        tabbedPane.setSelectedIndex(8);
+                        buttons[8].setBackground(new Color(51, 51, 51));
+                    }
                     button.revalidate();
                 }
 

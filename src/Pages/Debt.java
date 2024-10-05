@@ -34,6 +34,7 @@ public final class Debt extends javax.swing.JFrame {
         users_button = new Components.CustomButton(this);
         export_import_button = new Components.CustomButton(this);
         settings_button = new Components.CustomButton(this);
+        account_button = new Components.CustomButton(this);
         logout_button = new Components.CustomButton(this);
         tabbedPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -79,6 +80,7 @@ public final class Debt extends javax.swing.JFrame {
         jTextField12 = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +188,12 @@ public final class Debt extends javax.swing.JFrame {
         settings_button.setOpaque(false);
         settings_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(settings_button);
+
+        account_button.setText("Account");
+        account_button.setBorderPainted(false);
+        account_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        account_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(account_button);
 
         logout_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         logout_button.setText("Logout");
@@ -459,6 +467,19 @@ public final class Debt extends javax.swing.JFrame {
 
         tabbedPane.addTab("Settings", jPanel9);
 
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 537, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Accounts", jPanel17);
+
         bottomPanel.add(tabbedPane, java.awt.BorderLayout.CENTER);
 
         background.add(bottomPanel, java.awt.BorderLayout.CENTER);
@@ -500,6 +521,7 @@ public final class Debt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton account_button;
     private javax.swing.JButton add_customer_button;
     private javax.swing.JPanel background;
     private javax.swing.JPanel bottomPanel;
@@ -521,6 +543,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -574,7 +597,8 @@ public final class Debt extends javax.swing.JFrame {
                     transactions_button,
                     users_button,
                     export_import_button,
-                    settings_button,};
+                    settings_button,
+                    account_button};
         ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this);
 
     }
