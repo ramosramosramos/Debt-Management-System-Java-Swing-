@@ -1,5 +1,5 @@
 
-package Services;
+package ServiceMethod;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,14 +7,10 @@ import java.sql.ResultSet;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author User
- */
-public class Debts {
-        static Connection conn = Configurations.JavaConnection.getConnection();
+public class Update {
+    static Connection conn = Configurations.JavaConnection.getConnection();
    
-    public static void UnpaidDebts(JTable table){
+    public static void UpdateDebts(JTable table){
 
         try {
             PreparedStatement pst = conn.prepareStatement("Select "
@@ -35,4 +31,6 @@ public class Debts {
             System.out.println(e.getMessage());
         }
     }
+    
+
 }

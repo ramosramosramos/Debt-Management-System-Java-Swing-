@@ -63,7 +63,7 @@ public class Handle {
                     } else if (buttonText.contains("paid")) {
                         tabbedPane.setSelectedIndex(2);
                         buttons[2].setBackground(new Color(51, 51, 51));
-                    } else if (buttonText.contains("add")) {
+                    } else if (buttonText.contains("manage")) {
                         tabbedPane.setSelectedIndex(3);
                         buttons[3].setBackground(new Color(51, 51, 51));
                     } else if (buttonText.contains("transactions")) {

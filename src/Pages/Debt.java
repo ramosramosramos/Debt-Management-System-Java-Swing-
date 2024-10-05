@@ -33,6 +33,8 @@ String acoount;
         menu_button = new Components.CustomButton(this);
         bottomPanel = new javax.swing.JPanel();
         menuPanel = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         dashboard_button = new Components.CustomButton(this);
         unpaid_button = new Components.CustomButton(this);
         paid_button = new Components.CustomButton(this);
@@ -78,10 +80,9 @@ String acoount;
         jPanel12 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -127,10 +128,20 @@ String acoount;
 
         menuPanel.setPreferredSize(new java.awt.Dimension(200, 567));
 
+        jPanel20.setPreferredSize(new java.awt.Dimension(190, 100));
+        jPanel20.setRequestFocusEnabled(false);
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel9.setText("Admin");
+        jPanel20.add(jLabel9);
+
+        menuPanel.add(jPanel20);
+
         dashboard_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         dashboard_button.setText("Dashboard");
         dashboard_button.setBorderPainted(false);
         dashboard_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dashboard_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dashboard_button.setOpaque(false);
         dashboard_button.setPreferredSize(new java.awt.Dimension(190, 35));
         dashboard_button.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +155,7 @@ String acoount;
         unpaid_button.setText("Unpaid customer");
         unpaid_button.setBorderPainted(false);
         unpaid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        unpaid_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         unpaid_button.setOpaque(false);
         unpaid_button.setPreferredSize(new java.awt.Dimension(190, 35));
         unpaid_button.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +169,7 @@ String acoount;
         paid_button.setText("Paid cutomer");
         paid_button.setBorderPainted(false);
         paid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        paid_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         paid_button.setOpaque(false);
         paid_button.setPreferredSize(new java.awt.Dimension(190, 35));
         paid_button.addActionListener(new java.awt.event.ActionListener() {
@@ -167,9 +180,10 @@ String acoount;
         menuPanel.add(paid_button);
 
         add_customer_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        add_customer_button.setText("Add customer");
+        add_customer_button.setText("Manage");
         add_customer_button.setBorderPainted(false);
         add_customer_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add_customer_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         add_customer_button.setOpaque(false);
         add_customer_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(add_customer_button);
@@ -178,6 +192,7 @@ String acoount;
         transactions_button.setText("Transactions");
         transactions_button.setBorderPainted(false);
         transactions_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transactions_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         transactions_button.setOpaque(false);
         transactions_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(transactions_button);
@@ -186,6 +201,7 @@ String acoount;
         users_button.setText("Users");
         users_button.setBorderPainted(false);
         users_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        users_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         users_button.setOpaque(false);
         users_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(users_button);
@@ -194,6 +210,7 @@ String acoount;
         export_import_button.setText("Export/Import");
         export_import_button.setBorderPainted(false);
         export_import_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        export_import_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         export_import_button.setOpaque(false);
         export_import_button.setPreferredSize(new java.awt.Dimension(190, 35));
         export_import_button.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +224,7 @@ String acoount;
         settings_button.setText("Settings");
         settings_button.setBorderPainted(false);
         settings_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        settings_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         settings_button.setOpaque(false);
         settings_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(settings_button);
@@ -214,6 +232,7 @@ String acoount;
         account_button.setText("Account");
         account_button.setBorderPainted(false);
         account_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        account_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         account_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(account_button);
 
@@ -221,6 +240,7 @@ String acoount;
         logout_button.setText("Logout");
         logout_button.setBorderPainted(false);
         logout_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         logout_button.setOpaque(false);
         logout_button.setPreferredSize(new java.awt.Dimension(190, 35));
         logout_button.addActionListener(new java.awt.event.ActionListener() {
@@ -571,17 +591,45 @@ String acoount;
 
         jPanel5.setLayout(new java.awt.BorderLayout());
 
+        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Add Customer");
+        jLabel6.setText("Manage");
         jPanel12.add(jLabel6);
 
         jPanel5.add(jPanel12, java.awt.BorderLayout.PAGE_START);
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel13.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 290, 40));
-        jPanel13.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 290, 40));
-        jPanel13.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 290, 40));
-        jPanel13.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 290, 40));
+
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setText("Add Customer");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
+
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setText("Add Cutomer");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 330, 40));
+
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton3.setText("Edit Cutomer");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 330, 40));
 
         jPanel5.add(jPanel13, java.awt.BorderLayout.CENTER);
 
@@ -760,6 +808,20 @@ String acoount;
         logout();
     }//GEN-LAST:event_logout_buttonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        onGlass();
+        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(),"Add Customer",JOptionPane.DEFAULT_OPTION);
+        offGlass();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
@@ -779,6 +841,9 @@ String acoount;
     private javax.swing.JScrollPane dashboard_scrollPane;
     private javax.swing.JButton export_import_button;
     private javax.swing.JPanel inner_dashboard;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -787,6 +852,7 @@ String acoount;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -799,6 +865,7 @@ String acoount;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
@@ -826,13 +893,9 @@ String acoount;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel menuPanel;
@@ -874,17 +937,26 @@ String acoount;
     }
 
     void logout() {
-        Components.CustomeGlassPane.onGlassPane(rootPane);
+       onGlass();
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure?", "Logout", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
             new Pages.Authentication.Login().setVisible(true);
             dispose();
         }
-        Components.CustomeGlassPane.offGlassPane(rootPane);
+        offGlass();
     }
     
     void updateDebts(){
         Services.Debts.UnpaidDebts(table_debts);
     }
+    
+    
+    void onGlass(){
+          Components.CustomeGlassPane.onGlassPane(rootPane);
+    }
+    void offGlass(){
+               Components.CustomeGlassPane.offGlassPane(rootPane);
+    }
+    
 
 }
