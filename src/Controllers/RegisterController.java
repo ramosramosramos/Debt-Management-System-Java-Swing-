@@ -26,15 +26,7 @@ public class RegisterController {
             pst.setString(9, date);
 
             int affect = pst.executeUpdate();
-
-            if (affect > 0) {
-                pst.close();
-                conn.close();
-                return true;
-            } else {
-                return false;
-            }
-
+            return affect > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

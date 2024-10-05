@@ -10,12 +10,16 @@ import javax.swing.JOptionPane;
 public final class Debt extends javax.swing.JFrame {
 
     Connection conn = null;
-
-    public Debt() {
+String acoount;
+    public Debt(String username) {
+        this.acoount= username;
         initComponents();
         DesignComponents();
         conn = Configurations.JavaConnection.getConnection();
         dashboard_button.setBackground(new Color(51, 51, 51));
+    
+    
+
 
     }
 
@@ -85,6 +89,13 @@ public final class Debt extends javax.swing.JFrame {
         jPanel17 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         background.setLayout(new java.awt.BorderLayout());
 
@@ -523,10 +534,17 @@ public final class Debt extends javax.swing.JFrame {
         logout();
     }//GEN-LAST:event_logout_buttonActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+//    if(acoount.equals("")){
+//            new Pages.Authentication.Login().setVisible(true);
+//            this.dispose();
+//        }        
+    }//GEN-LAST:event_formWindowGainedFocus
+
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
-            new Debt().setVisible(true);
+            new Debt("").setVisible(true);
 
         });
     }

@@ -101,7 +101,7 @@ public final class Register extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 102, 0));
         jLabel1.setText("DEBT COMPANY");
         jPanel3.add(jLabel1);
 
@@ -575,8 +575,10 @@ public final class Register extends javax.swing.JFrame {
         boolean isAllowed = Controllers.RegisterController.authenticate(name, username, password, gender, city, address, phone, age);
 
         if (isAllowed == true) {
-            new Pages.Debt().setVisible(true);
+            new Pages.Debt(username).setVisible(true);
             dispose();
+        }else{
+            error_username_label.setText("Invalid credentials");
         }
     }
 
