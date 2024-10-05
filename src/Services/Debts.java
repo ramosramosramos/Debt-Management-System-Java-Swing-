@@ -1,5 +1,9 @@
-
-package ServiceMethod;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,10 +11,14 @@ import java.sql.ResultSet;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 
-public class Update {
-    static Connection conn = Configurations.JavaConnection.getConnection();
+/**
+ *
+ * @author User
+ */
+public class Debts {
+        static Connection conn = Configurations.JavaConnection.getConnection();
    
-    public static void UpdateDebts(JTable table){
+    public static void UnpaidDebts(JTable table){
 
         try {
             PreparedStatement pst = conn.prepareStatement("Select "
@@ -31,6 +39,4 @@ public class Update {
             System.out.println(e.getMessage());
         }
     }
-    
-
 }

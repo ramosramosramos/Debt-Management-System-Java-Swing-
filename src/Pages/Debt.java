@@ -884,7 +884,7 @@ String acoount;
     }
     
     void updateDebts(){
-        ServiceMethod.Update.UpdateDebts(table_debts);
+        Services.Debts.UnpaidDebts(table_debts);
     }
 
 }

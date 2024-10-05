@@ -49,6 +49,7 @@ public class CreateTable {
                 create_table_debts.close();
             }
 
+            
             System.out.println("Created table debts");
         } catch (Exception e) {
             System.err.println(e.getMessage());
