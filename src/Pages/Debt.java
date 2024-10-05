@@ -86,11 +86,6 @@ public final class Debt extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                backgroundKeyPressed(evt);
-            }
-        });
         background.setLayout(new java.awt.BorderLayout());
 
         topPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
@@ -216,8 +211,6 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(logout_button);
 
         bottomPanel.add(menuPanel, java.awt.BorderLayout.LINE_START);
-
-        tabbedPane.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -529,12 +522,6 @@ public final class Debt extends javax.swing.JFrame {
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
         logout();
     }//GEN-LAST:event_logout_buttonActionPerformed
-
-    private void backgroundKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_backgroundKeyPressed
-  if(evt.isControlDown()){
-          JOptionPane.showMessageDialog(null, "hey");
-      }        // TODO add your handling code here:
-    }//GEN-LAST:event_backgroundKeyPressed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();

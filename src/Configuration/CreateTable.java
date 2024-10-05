@@ -11,6 +11,7 @@ public class CreateTable {
                     + "id int primary key auto_increment,"
                     + " name varchar(255) not null,"
                     + "username varchar(255) unique ,"
+                    + "password varchar(255)not null,"
                     + " phone varchar(255) unique,"
                     + "address varchar(255) not null,"
                     + " city varchar(255) not null,"
