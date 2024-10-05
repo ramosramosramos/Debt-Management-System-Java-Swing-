@@ -10,17 +10,16 @@ import javax.swing.JOptionPane;
 public final class Debt extends javax.swing.JFrame {
 
     Connection conn = null;
-String acoount;
+
     public Debt(String username) {
-        this.acoount= username;
         initComponents();
-        DesignComponents();
-
         conn = Configurations.JavaConnection.getConnection();
+        DesignComponents();
         dashboard_button.setBackground(new Color(51, 51, 51));
-    
-    
-
+        if (username.isEmpty()) {
+            username = "kent1";
+        }
+        setAccountDetails(username);
 
     }
 
@@ -104,6 +103,17 @@ String acoount;
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
+        jPanel37 = new javax.swing.JPanel();
+        account_name8 = new javax.swing.JLabel();
+        account_panel_holder = new javax.swing.JPanel();
+        name_label = new javax.swing.JLabel();
+        username_label = new javax.swing.JLabel();
+        phone_label = new javax.swing.JLabel();
+        city_label = new javax.swing.JLabel();
+        address_label = new javax.swing.JLabel();
+        status_label = new javax.swing.JLabel();
+        age_label = new javax.swing.JLabel();
+        created_at_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -759,16 +769,59 @@ String acoount;
 
         tabbedPane.addTab("Settings", jPanel9);
 
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
-        );
+        jPanel17.setLayout(new java.awt.BorderLayout());
+
+        jPanel37.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        account_name8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        account_name8.setText("Account");
+        jPanel37.add(account_name8);
+
+        jPanel17.add(jPanel37, java.awt.BorderLayout.PAGE_START);
+
+        account_panel_holder.setPreferredSize(new java.awt.Dimension(700, 40));
+
+        name_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        name_label.setText("Name");
+        name_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(name_label);
+
+        username_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        username_label.setText("Username");
+        username_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(username_label);
+
+        phone_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        phone_label.setText("Phone number");
+        phone_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(phone_label);
+
+        city_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        city_label.setText("City");
+        city_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(city_label);
+
+        address_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        address_label.setText("Address");
+        address_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(address_label);
+
+        status_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        status_label.setText("Status:");
+        status_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(status_label);
+
+        age_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        age_label.setText("Age");
+        age_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(age_label);
+
+        created_at_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        created_at_label.setText("Account created at:");
+        created_at_label.setPreferredSize(new java.awt.Dimension(700, 40));
+        account_panel_holder.add(created_at_label);
+
+        jPanel17.add(account_panel_holder, java.awt.BorderLayout.CENTER);
 
         tabbedPane.addTab("Accounts", jPanel17);
 
@@ -810,7 +863,7 @@ String acoount;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         onGlass();
-        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(),"Add Customer",JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(), "Add Customer", JOptionPane.DEFAULT_OPTION);
         offGlass();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -832,9 +885,15 @@ String acoount;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton account_button;
+    private javax.swing.JLabel account_name8;
+    private javax.swing.JPanel account_panel_holder;
     private javax.swing.JButton add_customer_button;
+    private javax.swing.JLabel address_label;
+    private javax.swing.JLabel age_label;
     private javax.swing.JPanel background;
     private javax.swing.JPanel bottomPanel;
+    private javax.swing.JLabel city_label;
+    private javax.swing.JLabel created_at_label;
     private javax.swing.JButton dashboard_button;
     private javax.swing.JPanel dashboard_holder;
     private javax.swing.JPanel dashboard_holder1;
@@ -883,6 +942,7 @@ String acoount;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -900,8 +960,11 @@ String acoount;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton menu_button;
+    private javax.swing.JLabel name_label;
     private javax.swing.JButton paid_button;
+    private javax.swing.JLabel phone_label;
     private javax.swing.JButton settings_button;
+    private javax.swing.JLabel status_label;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table_dashboard3;
     private javax.swing.JTable table_dashboard4;
@@ -910,16 +973,27 @@ String acoount;
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
+    private javax.swing.JLabel username_label;
     private javax.swing.JButton users_button;
     // End of variables declaration//GEN-END:variables
 
+    void setAccountDetails(String username) {
+        Pages.Account details = new Pages.Account(username);
+        name_label.setText("Name: " + details.getName());
+        username_label.setText("Username: " + username);
+        city_label.setText("City: " + details.getCity());
+        phone_label.setText("Phone number: " + details.getPhone());
+        age_label.setText("Age: " + details.getAge());
+        address_label.setText("Address: " + details.getAddress());
+        created_at_label.setText("Created at: " + details.getCreated_at());
+    }
+
     void DesignComponents() {
-  
+
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
         Components.CustomeGlassPane.putGlassPane(rootPane);
         updateDebts();
-
 
         JButton buttons[]
                 = {
@@ -937,7 +1011,7 @@ String acoount;
     }
 
     void logout() {
-       onGlass();
+        onGlass();
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure?", "Logout", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
             new Pages.Authentication.Login().setVisible(true);
@@ -945,19 +1019,18 @@ String acoount;
         }
         offGlass();
     }
-    
-    void updateDebts(){
+
+    void updateDebts() {
         Services.Debts.UnpaidDebts(table_unpaid_debts);
         Services.Debts.PaidDebts(table_paid_debts);
     }
-    
-    
-    void onGlass(){
-          Components.CustomeGlassPane.onGlassPane(rootPane);
+
+    void onGlass() {
+        Components.CustomeGlassPane.onGlassPane(rootPane);
     }
-    void offGlass(){
-               Components.CustomeGlassPane.offGlassPane(rootPane);
+
+    void offGlass() {
+        Components.CustomeGlassPane.offGlassPane(rootPane);
     }
-    
 
 }

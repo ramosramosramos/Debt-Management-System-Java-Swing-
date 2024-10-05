@@ -1,40 +1,48 @@
-
 package Pages;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Account {
 
-    public Account(String name, String username, String password, String phone, String role, String city, String address, String age, String gender, String phone_verified_at, String created_at) {
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.role = role;
-        this.city = city;
-        this.address = address;
-        this.age = age;
-        this.gender = gender;
-        this.phone_verified_at = phone_verified_at;
-        this.created_at = created_at;
+    static Connection conn = Configurations.JavaConnection.getConnection();
+
+    String name;
+    String phone;
+    String city;
+    String address;
+    String age;
+    String created_at;
+
+    public Account(String username) {
+        try {
+
+            PreparedStatement pst = conn.prepareStatement("Select * from users where username=?");
+            pst.setString(1, username);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                name = rs.getString("name");
+                phone = rs.getString("name");
+                city = rs.getString("city");
+                address = rs.getString("address");
+                age = rs.getString("age");
+                created_at = rs.getString("created_at");
+
+            }
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public String getPhone() {
         return phone;
-    }
-
-    public String getRole() {
-        return role;
     }
 
     public String getCity() {
@@ -49,32 +57,8 @@ public class Account {
         return age;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public String getPhone_verified_at() {
-        return phone_verified_at;
-    }
-
     public String getCreated_at() {
         return created_at;
     }
-
-
-String name;
-String username;
-String password;
-String phone;
-String role;
-String city;
-String address;
-String age;
-String gender;
-String phone_verified_at;
-String created_at;
-
-
-
 
 }
