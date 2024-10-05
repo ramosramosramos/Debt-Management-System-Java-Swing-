@@ -1,15 +1,21 @@
 package Pages.Authentication;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author User
  */
-public class Register extends javax.swing.JFrame {
+public final class Register extends javax.swing.JFrame {
 
     public Register() {
         initComponents();
+        designComponents();
 
     }
 
@@ -22,6 +28,7 @@ public class Register extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         pane = new javax.swing.JScrollPane();
         form = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
@@ -111,16 +118,15 @@ public class Register extends javax.swing.JFrame {
 
         jPanel4.setPreferredSize(new java.awt.Dimension(989, 50));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 989, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel2.setText("Already have an account? Login");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
+        jPanel4.add(jLabel2);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
@@ -366,37 +372,23 @@ public class Register extends javax.swing.JFrame {
 //        dispose();
     }//GEN-LAST:event_register_buttonActionPerformed
 
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        new Pages.Authentication.Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel2MousePressed
+
     void register() {
         String name = name_field.getText().trim();
         String username = username_field.getText().trim();
-        String password = password_field.getText().trim();
-        String confirm_password = confirm_password_field.getText();
+        String password = new String(password_field.getPassword()).trim();
+        String confirm_password = new String(confirm_password_field.getPassword()).trim();
         String gender = gender_field.getSelectedItem().toString().trim();
         String city = city_field.getText().trim();
         String address = address_field.getText().trim();
         String phone = phone_number_field.getText().trim();
         String age = age_field.getValue().toString().trim();
 
-        if (name.isEmpty()
-                && username.isEmpty()
-                && password.isEmpty()
-                && gender.equals("Select none")
-                && confirm_password.isEmpty()
-                && city.isEmpty()
-                && address.isEmpty()
-                && phone.isEmpty()) {
-
-            error_name_label.setText("Name is required");
-            error_username_label.setText("Username is required");
-            error_password_label.setText("Password is required");
-            error_gender_label.setText("Gender is required");
-            error_city_label.setText("City is required");
-            error_address.setText("Address is required");
-            error_phone_label.setText("Phone number is required");
-
-            return;
-
-        }
+   
 
         if (name.isEmpty()) {
             error_name_label.setText("Name is required");
@@ -412,6 +404,10 @@ public class Register extends javax.swing.JFrame {
         }
         if (confirm_password.isEmpty()) {
             error_confirm_pasword_label.setText("Password confirmation is required");
+            return;
+        }
+        if(!password.equals(confirm_password)){
+            error_password_label.setText("Password does not match");
             return;
         }
         if (gender.contains("Select none")) {
@@ -475,6 +471,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPanel form_panel2;
     private javax.swing.JComboBox gender_field;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
@@ -508,4 +505,40 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JButton register_button;
     private javax.swing.JTextField username_field;
     // End of variables declaration//GEN-END:variables
+
+    void designComponents() {
+        resetErrorField(name_field, error_name_label);
+        resetErrorField(username_field, error_username_label);
+        resetErrorField(password_field, error_password_label);
+        resetErrorField(confirm_password_field, error_confirm_pasword_label);
+        resetErrorField(city_field, error_city_label);
+        resetErrorField(address_field, error_address);
+        resetErrorField(phone_number_field, error_phone_label);
+        resetErrorComboBox(gender_field, error_gender_label);
+    }
+
+    void resetErrorField(JTextField field, JLabel error) {
+        field.addFocusListener(new FocusAdapter() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                error.setText("");
+            }
+
+        });
+
+    }
+
+    void resetErrorComboBox(JComboBox field, JLabel error) {
+        field.addFocusListener(new FocusAdapter() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                error.setText("");
+            }
+
+        });
+
+    }
+
 }

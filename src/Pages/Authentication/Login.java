@@ -22,6 +22,7 @@ public class Login extends javax.swing.JFrame {
         password_field = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         login_button = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -69,6 +70,16 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(login_button);
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel2.setText("Don't have an account? Register");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
+        jPanel3.add(jLabel2);
+
         getContentPane().add(jPanel3);
 
         setSize(new java.awt.Dimension(445, 527));
@@ -80,6 +91,11 @@ public class Login extends javax.swing.JFrame {
   dispose();
     }//GEN-LAST:event_login_buttonActionPerformed
 
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        new Pages.Authentication.Register().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel2MousePressed
+
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
@@ -89,6 +105,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
