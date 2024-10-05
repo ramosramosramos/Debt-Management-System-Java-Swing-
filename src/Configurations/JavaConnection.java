@@ -1,4 +1,4 @@
-package Configuration;
+package Configurations;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,12 +10,12 @@ public class JavaConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
-            Configuration.Database.createDatabase(conn);
-            Configuration.Database.useDatabase(conn);
+            Configurations.Database.createDatabase(conn);
+            Configurations.Database.useDatabase(conn);
 
-            Configuration.CreateTable.users(conn);
-            Configuration.CreateTable.debts(conn);
-            Configuration.CreateTable.validations(conn);
+            Configurations.CreateTable.users(conn);
+            Configurations.CreateTable.debts(conn);
+            Configurations.CreateTable.validations(conn);
             return conn;
 
         } catch (ClassNotFoundException | SQLException e) {

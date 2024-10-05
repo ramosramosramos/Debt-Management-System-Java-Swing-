@@ -14,7 +14,7 @@ public final class Debt extends javax.swing.JFrame {
     public Debt() {
         initComponents();
         DesignComponents();
-        conn = Configuration.JavaConnection.getConnection();
+        conn = Configurations.JavaConnection.getConnection();
         dashboard_button.setBackground(new Color(51, 51, 51));
 
     }
