@@ -1,17 +1,7 @@
 package Pages.Authentication;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-/**
- *
- * @author User
- */
 public final class Register extends javax.swing.JFrame {
 
     public Register() {
@@ -592,39 +582,14 @@ public final class Register extends javax.swing.JFrame {
 
     void designComponents() {
         ServiceMethod.Handle.HoverLink(link_label);
-
-        resetErrorField(name_field, error_name_label);
-        resetErrorField(username_field, error_username_label);
-        resetErrorField(password_field, error_password_label);
-        resetErrorField(confirm_password_field, error_confirm_pasword_label);
-        resetErrorField(city_field, error_city_label);
-        resetErrorField(address_field, error_address);
-        resetErrorField(phone_number_field, error_phone_label);
-        resetErrorComboBox(gender_field, error_gender_label);
-    }
-
-    void resetErrorField(JTextField field, JLabel error) {
-        field.addFocusListener(new FocusAdapter() {
-
-            @Override
-            public void focusGained(FocusEvent e) {
-                error.setText("");
-            }
-
-        });
-
-    }
-
-    void resetErrorComboBox(JComboBox field, JLabel error) {
-        field.addFocusListener(new FocusAdapter() {
-
-            @Override
-            public void focusGained(FocusEvent e) {
-                error.setText("");
-            }
-
-        });
-
+        ServiceMethod.Handle.resetErrorField(name_field, error_name_label);
+        ServiceMethod.Handle.resetErrorField(username_field, error_username_label);
+        ServiceMethod.Handle.resetErrorField(password_field, error_password_label);
+        ServiceMethod.Handle.resetErrorField(confirm_password_field, error_confirm_pasword_label);
+        ServiceMethod.Handle.resetErrorField(city_field, error_city_label);
+        ServiceMethod.Handle.resetErrorField(address_field, error_address);
+        ServiceMethod.Handle.resetErrorField(phone_number_field, error_phone_label);
+        ServiceMethod.Handle.resetErrorComboBox(gender_field, error_gender_label);
     }
 
 }

@@ -7,13 +7,17 @@ package ServiceMethod;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -28,16 +32,16 @@ public class Handle {
             menuPanel.setPreferredSize(new Dimension(200, Integer.MAX_VALUE));
             isOpenMenu = true;
         } else {
-            menuPanel.setPreferredSize(new Dimension(1-1, 1));
+            menuPanel.setPreferredSize(new Dimension(1 - 1, 1));
             isOpenMenu = false;
         }
 
         menuPanel.repaint();
         menuPanel.revalidate();
     }
-    
-    public static void HoverAndSelectTabbePane(JButton[] buttons,JTabbedPane tabbedPane,JFrame frame){
-          for (JButton button : buttons) {
+
+    public static void HoverAndSelectTabbePane(JButton[] buttons, JTabbedPane tabbedPane, JFrame frame) {
+        for (JButton button : buttons) {
             button.addMouseListener(new MouseAdapter() {
 
                 @Override
@@ -74,8 +78,7 @@ public class Handle {
                     } else if (buttonText.contains("settings")) {
                         tabbedPane.setSelectedIndex(7);
                         buttons[7].setBackground(new Color(51, 51, 51));
-                    }
-                   else if (buttonText.contains("account")) {
+                    } else if (buttonText.contains("account")) {
                         tabbedPane.setSelectedIndex(8);
                         buttons[8].setBackground(new Color(51, 51, 51));
                     }
@@ -85,26 +88,46 @@ public class Handle {
             });
         }
     }
-    
-    
-    
-    public static void HoverLink(JLabel link_label){
+
+    public static void HoverLink(JLabel link_label) {
         link_label.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-              link_label.setForeground(new Color(255,102,0));
+                link_label.setForeground(new Color(255, 102, 0));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                link_label.setForeground(new Color(240,240,240));
+                link_label.setForeground(new Color(240, 240, 240));
             }
-            
-            
 
-        
         });
-        
+
     }
+
+    public static void resetErrorField(JTextField field, JLabel error) {
+        field.addFocusListener(new FocusAdapter() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                error.setText("");
+            }
+
+        });
+
+    }
+
+    public static void resetErrorComboBox(JComboBox field, JLabel error) {
+        field.addFocusListener(new FocusAdapter() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                error.setText("");
+            }
+
+        });
+
+    }
+
 }
