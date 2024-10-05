@@ -15,6 +15,7 @@ String acoount;
         this.acoount= username;
         initComponents();
         DesignComponents();
+
         conn = Configurations.JavaConnection.getConnection();
         dashboard_button.setBackground(new Color(51, 51, 51));
     
@@ -46,13 +47,28 @@ String acoount;
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_dashboard = new javax.swing.JTable();
+        dashboard_scrollPane = new javax.swing.JScrollPane();
+        inner_dashboard = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jPanel23 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jPanel25 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        jPanel29 = new javax.swing.JPanel();
+        jPanel32 = new javax.swing.JPanel();
+        jPanel34 = new javax.swing.JPanel();
+        jPanel35 = new javax.swing.JPanel();
+        jPanel36 = new javax.swing.JPanel();
+        jPanel28 = new javax.swing.JPanel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel24 = new javax.swing.JPanel();
+        jPanel33 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_dashboard1 = new javax.swing.JTable();
+        table_debts = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -89,13 +105,6 @@ String acoount;
         jPanel17 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                formWindowGainedFocus(evt);
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
-            }
-        });
 
         background.setLayout(new java.awt.BorderLayout());
 
@@ -231,35 +240,252 @@ String acoount;
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        table_dashboard.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        inner_dashboard.setPreferredSize(new java.awt.Dimension(700, 1000));
+        inner_dashboard.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        table_dashboard.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(table_dashboard);
-        if (table_dashboard.getColumnModel().getColumnCount() > 0) {
-            table_dashboard.getColumnModel().getColumn(0).setResizable(false);
-            table_dashboard.getColumnModel().getColumn(1).setResizable(false);
-            table_dashboard.getColumnModel().getColumn(2).setResizable(false);
-            table_dashboard.getColumnModel().getColumn(3).setResizable(false);
-        }
+        jPanel21.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel21.setPreferredSize(new java.awt.Dimension(250, 100));
 
-        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel21);
+
+        jPanel22.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel22.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel22);
+
+        jPanel23.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel23.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel23);
+
+        jPanel27.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel27.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel27);
+
+        jPanel25.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel25.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel25);
+
+        jPanel30.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel30.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
+        jPanel30.setLayout(jPanel30Layout);
+        jPanel30Layout.setHorizontalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel30Layout.setVerticalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel30);
+
+        jPanel29.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel29.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel29);
+
+        jPanel32.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel32.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel32);
+
+        jPanel34.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel34.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel34);
+
+        jPanel35.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel35.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
+        jPanel35.setLayout(jPanel35Layout);
+        jPanel35Layout.setHorizontalGroup(
+            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel35Layout.setVerticalGroup(
+            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel35);
+
+        jPanel36.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel36.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel36);
+
+        jPanel28.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel28.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel28);
+
+        jPanel26.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel26.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+        jPanel26.setLayout(jPanel26Layout);
+        jPanel26Layout.setHorizontalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel26Layout.setVerticalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel26);
+
+        jPanel24.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel24.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel24);
+
+        jPanel33.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel33.setPreferredSize(new java.awt.Dimension(250, 100));
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        inner_dashboard.add(jPanel33);
+
+        dashboard_scrollPane.setViewportView(inner_dashboard);
+
+        jPanel1.add(dashboard_scrollPane, java.awt.BorderLayout.CENTER);
 
         tabbedPane.addTab("Dashboard", jPanel1);
 
@@ -271,7 +497,7 @@ String acoount;
 
         jPanel2.add(jPanel10, java.awt.BorderLayout.PAGE_START);
 
-        table_dashboard1.setModel(new javax.swing.table.DefaultTableModel(
+        table_debts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -290,13 +516,13 @@ String acoount;
                 return canEdit [columnIndex];
             }
         });
-        table_dashboard1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(table_dashboard1);
-        if (table_dashboard1.getColumnModel().getColumnCount() > 0) {
-            table_dashboard1.getColumnModel().getColumn(0).setResizable(false);
-            table_dashboard1.getColumnModel().getColumn(1).setResizable(false);
-            table_dashboard1.getColumnModel().getColumn(2).setResizable(false);
-            table_dashboard1.getColumnModel().getColumn(3).setResizable(false);
+        table_debts.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(table_debts);
+        if (table_debts.getColumnModel().getColumnCount() > 0) {
+            table_debts.getColumnModel().getColumn(0).setResizable(false);
+            table_debts.getColumnModel().getColumn(1).setResizable(false);
+            table_debts.getColumnModel().getColumn(2).setResizable(false);
+            table_debts.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -534,13 +760,6 @@ String acoount;
         logout();
     }//GEN-LAST:event_logout_buttonActionPerformed
 
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-//    if(acoount.equals("")){
-//            new Pages.Authentication.Login().setVisible(true);
-//            this.dispose();
-//        }        
-    }//GEN-LAST:event_formWindowGainedFocus
-
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
@@ -555,7 +774,11 @@ String acoount;
     private javax.swing.JPanel background;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton dashboard_button;
+    private javax.swing.JPanel dashboard_holder;
+    private javax.swing.JPanel dashboard_holder1;
+    private javax.swing.JScrollPane dashboard_scrollPane;
     private javax.swing.JButton export_import_button;
+    private javax.swing.JPanel inner_dashboard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -574,15 +797,31 @@ String acoount;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -601,11 +840,10 @@ String acoount;
     private javax.swing.JButton paid_button;
     private javax.swing.JButton settings_button;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTable table_dashboard;
-    private javax.swing.JTable table_dashboard1;
     private javax.swing.JTable table_dashboard2;
     private javax.swing.JTable table_dashboard3;
     private javax.swing.JTable table_dashboard4;
+    private javax.swing.JTable table_debts;
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
@@ -613,10 +851,13 @@ String acoount;
     // End of variables declaration//GEN-END:variables
 
     void DesignComponents() {
-        Components.CustomTable.Design(table_dashboard);
+  
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
         Components.CustomeGlassPane.putGlassPane(rootPane);
+        updateDebts();
+
+
         JButton buttons[]
                 = {
                     dashboard_button,
@@ -640,6 +881,10 @@ String acoount;
             dispose();
         }
         Components.CustomeGlassPane.offGlassPane(rootPane);
+    }
+    
+    void updateDebts(){
+        ServiceMethod.Update.UpdateDebts(table_debts);
     }
 
 }

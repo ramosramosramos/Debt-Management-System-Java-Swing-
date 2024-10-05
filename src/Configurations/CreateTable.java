@@ -36,6 +36,7 @@ public class CreateTable {
             try (PreparedStatement create_table_debts = conn.prepareStatement("Create table if not exists debts("
                     + "id int primary key auto_increment,"
                     + "user_id int not null,"
+                    
                     + "creditor varchar(255) default 'Debt Company',"
                     + "amount decimal(10,2) not null ,"
                     + "amount_paid decimal(10,2) not null,"
