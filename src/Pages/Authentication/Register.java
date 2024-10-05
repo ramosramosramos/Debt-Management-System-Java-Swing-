@@ -17,8 +17,6 @@ public final class Register extends javax.swing.JFrame {
     public Register() {
         initComponents();
         designComponents();
-        
- 
 
     }
 
@@ -154,6 +152,11 @@ public final class Register extends javax.swing.JFrame {
 
         name_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         name_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        name_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                name_fieldActionPerformed(evt);
+            }
+        });
         jPanel19.add(name_field);
 
         form.add(jPanel19);
@@ -177,6 +180,11 @@ public final class Register extends javax.swing.JFrame {
 
         city_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         city_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        city_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                city_fieldActionPerformed(evt);
+            }
+        });
         jPanel20.add(city_field);
 
         form.add(jPanel20);
@@ -200,6 +208,11 @@ public final class Register extends javax.swing.JFrame {
 
         username_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         username_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        username_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                username_fieldActionPerformed(evt);
+            }
+        });
         jPanel22.add(username_field);
 
         form.add(jPanel22);
@@ -223,6 +236,11 @@ public final class Register extends javax.swing.JFrame {
 
         address_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         address_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        address_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                address_fieldActionPerformed(evt);
+            }
+        });
         jPanel24.add(address_field);
 
         form.add(jPanel24);
@@ -245,6 +263,11 @@ public final class Register extends javax.swing.JFrame {
         jPanel23.add(error_panel2);
 
         password_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        password_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                password_fieldActionPerformed(evt);
+            }
+        });
         jPanel23.add(password_field);
 
         form.add(jPanel23);
@@ -268,6 +291,11 @@ public final class Register extends javax.swing.JFrame {
 
         phone_number_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         phone_number_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        phone_number_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phone_number_fieldActionPerformed(evt);
+            }
+        });
         jPanel21.add(phone_number_field);
 
         form.add(jPanel21);
@@ -290,6 +318,11 @@ public final class Register extends javax.swing.JFrame {
         jPanel25.add(error_panel3);
 
         confirm_password_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        confirm_password_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirm_password_fieldActionPerformed(evt);
+            }
+        });
         jPanel25.add(confirm_password_field);
 
         form.add(jPanel25);
@@ -370,8 +403,7 @@ public final class Register extends javax.swing.JFrame {
 
     private void register_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register_buttonActionPerformed
         register();
-//        new Pages.Debt().setVisible(true);
-//        dispose();
+
     }//GEN-LAST:event_register_buttonActionPerformed
 
     private void link_labelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_labelMousePressed
@@ -379,81 +411,33 @@ public final class Register extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_link_labelMousePressed
 
-    void register() {
-        String name = name_field.getText().trim();
-        String username = username_field.getText().trim();
-        String password = new String(password_field.getPassword()).trim();
-        String confirm_password = new String(confirm_password_field.getPassword()).trim();
-        String gender = gender_field.getSelectedItem().toString().trim();
-        String city = city_field.getText().trim();
-        String address = address_field.getText().trim();
-        String phone = phone_number_field.getText().trim();
-        String age = age_field.getValue().toString().trim();
+    private void name_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_name_fieldActionPerformed
 
-        if (name.isEmpty() && username.isEmpty() && password.isEmpty() && gender.equals("Select none") && city.isEmpty()
-                && address.isEmpty() && phone.isEmpty()) {
-            error_name_label.setText("Name is required");
-            error_username_label.setText("Username is required");
-            error_password_label.setText("Password is required");
-            error_gender_label.setText("Gender is required");
-            error_city_label.setText("City is required");
-            error_address.setText("Address is required");
-            error_phone_label.setText("Phone number is required");
-            return;
-        }
+    private void username_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_username_fieldActionPerformed
 
-        if (name.isEmpty()) {
-            error_name_label.setText("Name is required");
-            return;
-        }
-        if (username.isEmpty()) {
-            error_username_label.setText("Username is required");
-            return;
-        }
-        if (Tools.Validator.isValidUsername(username) == false) {
-            error_username_label.setText("Not a valid username, please addd some numbers");
-            return;
-        }
+    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_password_fieldActionPerformed
 
-        if (password.isEmpty()) {
-            error_password_label.setText("Password is required");
-            return;
-        }
-        if (confirm_password.isEmpty()) {
-            error_confirm_pasword_label.setText("Password confirmation is required");
-            return;
-        }
-        if (!password.equals(confirm_password)) {
-            error_password_label.setText("Password does not match");
-            return;
-        }
-        if (gender.contains("Select none")) {
-            error_gender_label.setText("Gender is required");
-            return;
-        }
-        if (city.isEmpty()) {
-            error_city_label.setText("City is required");
-            return;
-        }
-        if (address.isEmpty()) {
-            error_address.setText("Address is required");
-            return;
-        }
-        if (phone.isEmpty()) {
-            error_phone_label.setText("Phone number is required");
-            return;
-        }
-        if (Integer.valueOf(age) < 18) {
-            error_age_label.setText("Only 18 years above is required");
-            return;
-        }
-        boolean isAllowed = Controllers.RegisterController.authenticate(name, username, password, gender, city, address, phone, age);
+    private void confirm_password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_password_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_confirm_password_fieldActionPerformed
 
-        if (isAllowed == true) {
-            new Pages.Debt().setVisible(true);
-            dispose();
-        }
-    }
+    private void city_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_city_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_city_fieldActionPerformed
+
+    private void address_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_address_fieldActionPerformed
+
+    private void phone_number_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phone_number_fieldActionPerformed
+        register();
+    }//GEN-LAST:event_phone_number_fieldActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -520,6 +504,91 @@ public final class Register extends javax.swing.JFrame {
     private javax.swing.JButton register_button;
     private javax.swing.JTextField username_field;
     // End of variables declaration//GEN-END:variables
+
+    void register() {
+
+        String name = name_field.getText().trim();
+        String username = username_field.getText().trim();
+        String password = new String(password_field.getPassword()).trim();
+        String confirm_password = new String(confirm_password_field.getPassword()).trim();
+        String gender = gender_field.getSelectedItem().toString().trim();
+        String city = city_field.getText().trim();
+        String address = address_field.getText().trim();
+        String phone = phone_number_field.getText().trim();
+        String age = age_field.getValue().toString().trim();
+
+        if (name.isEmpty() && username.isEmpty() && password.isEmpty() && gender.equals("Select none") && city.isEmpty()
+                && address.isEmpty() && phone.isEmpty()) {
+            error_name_label.setText("Name is required");
+            error_username_label.setText("Username is required");
+            error_password_label.setText("Password is required");
+            error_gender_label.setText("Gender is required");
+            error_city_label.setText("City is required");
+            error_address.setText("Address is required");
+            error_phone_label.setText("Phone number is required");
+            return;
+        }
+
+        if (name.isEmpty()) {
+            error_name_label.setText("Name is required");
+            return;
+        }
+        if (username.isEmpty()) {
+            error_username_label.setText("Username is required");
+            return;
+        }
+        if (Tools.Validator.isValidUsername(username) == false) {
+            error_username_label.setText("Not a valid username, please add some numbers");
+            return;
+        }
+        if (ServiceMethod.CheckUnique.username(username) == true) {
+            error_username_label.setText("This username is already exists,please try another");
+            return;
+        }
+
+        if (password.isEmpty()) {
+            error_password_label.setText("Password is required");
+            return;
+        }
+        if (confirm_password.isEmpty()) {
+            error_confirm_pasword_label.setText("Password confirmation is required");
+            return;
+        }
+        if (!password.equals(confirm_password)) {
+            error_password_label.setText("Password does not match");
+            return;
+        }
+        if (gender.contains("Select none")) {
+            error_gender_label.setText("Gender is required");
+            return;
+        }
+        if (city.isEmpty()) {
+            error_city_label.setText("City is required");
+            return;
+        }
+        if (address.isEmpty()) {
+            error_address.setText("Address is required");
+            return;
+        }
+        if (phone.isEmpty()) {
+            error_phone_label.setText("Phone number is required");
+            return;
+        }
+        if (ServiceMethod.CheckUnique.phone(phone) == true) {
+            error_phone_label.setText("Phone number is already exist,please try another");
+            return;
+        }
+        if (Integer.valueOf(age) < 18) {
+            error_age_label.setText("Only 18 years above is required");
+            return;
+        }
+        boolean isAllowed = Controllers.RegisterController.authenticate(name, username, password, gender, city, address, phone, age);
+
+        if (isAllowed == true) {
+            new Pages.Debt().setVisible(true);
+            dispose();
+        }
+    }
 
     void designComponents() {
         ServiceMethod.Handle.HoverLink(link_label);
