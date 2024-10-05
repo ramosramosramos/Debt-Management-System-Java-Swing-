@@ -4,6 +4,8 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.*;
 import java.sql.Connection;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 public final class Debt extends javax.swing.JFrame {
 
@@ -201,6 +203,11 @@ public final class Debt extends javax.swing.JFrame {
         logout_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logout_button.setOpaque(false);
         logout_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        logout_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_buttonActionPerformed(evt);
+            }
+        });
         menuPanel.add(logout_button);
 
         bottomPanel.add(menuPanel, java.awt.BorderLayout.LINE_START);
@@ -505,12 +512,16 @@ public final class Debt extends javax.swing.JFrame {
     }//GEN-LAST:event_unpaid_buttonActionPerformed
 
     private void export_import_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_export_import_buttonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_export_import_buttonActionPerformed
 
     private void paid_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paid_buttonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_paid_buttonActionPerformed
+
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
+        logout();
+    }//GEN-LAST:event_logout_buttonActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -587,7 +598,7 @@ public final class Debt extends javax.swing.JFrame {
         Components.CustomTable.Design(table_dashboard);
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
-
+        Components.CustomeGlassPane.putGlassPane(rootPane);
         JButton buttons[]
                 = {
                     dashboard_button,
@@ -601,6 +612,16 @@ public final class Debt extends javax.swing.JFrame {
                     account_button};
         ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this);
 
+    }
+
+    void logout() {
+        Components.CustomeGlassPane.onGlassPane(rootPane);
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure?", "Logout", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            new Pages.Authentication.Login().setVisible(true);
+            dispose();
+        }
+        Components.CustomeGlassPane.offGlassPane(rootPane);
     }
 
 }

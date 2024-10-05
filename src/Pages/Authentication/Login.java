@@ -62,6 +62,11 @@ public class Login extends javax.swing.JFrame {
         login_button.setText("Login");
         login_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         login_button.setPreferredSize(new java.awt.Dimension(400, 40));
+        login_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                login_buttonActionPerformed(evt);
+            }
+        });
         jPanel3.add(login_button);
 
         getContentPane().add(jPanel3);
@@ -69,6 +74,11 @@ public class Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(445, 527));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_buttonActionPerformed
+  new Pages.Debt().setVisible(true);
+  dispose();
+    }//GEN-LAST:event_login_buttonActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
