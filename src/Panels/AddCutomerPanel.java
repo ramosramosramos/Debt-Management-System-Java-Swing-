@@ -40,7 +40,7 @@ public class AddCutomerPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Proceed");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 310, 350, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 350, 40));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 363, 430, 14));
 
         jTextField1.setText("jTextField1");
@@ -67,11 +67,9 @@ public class AddCutomerPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

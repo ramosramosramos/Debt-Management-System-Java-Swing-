@@ -51,9 +51,13 @@ public final class Debt extends javax.swing.JFrame {
         dashboard_scrollPane = new javax.swing.JScrollPane();
         inner_dashboard = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
+        user_count_label = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
+        unverified_count_label = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
+        male__count_label = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
+        female_count_label = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
@@ -91,7 +95,7 @@ public final class Debt extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        table_dashboard4 = new javax.swing.JTable();
+        table_users = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -276,15 +280,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel21.setBackground(new java.awt.Color(51, 51, 51));
         jPanel21.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        user_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        user_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        user_count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(user_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(user_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel21);
@@ -292,15 +306,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel22.setBackground(new java.awt.Color(51, 51, 51));
         jPanel22.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        unverified_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        unverified_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        unverified_count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(unverified_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(unverified_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel22);
@@ -308,15 +332,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel23.setBackground(new java.awt.Color(51, 51, 51));
         jPanel23.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        male__count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        male__count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        male__count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(male__count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(male__count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel23);
@@ -324,15 +358,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel27.setBackground(new java.awt.Color(51, 51, 51));
         jPanel27.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        female_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        female_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        female_count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(female_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(female_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel27);
@@ -693,7 +737,7 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel7.add(jPanel15, java.awt.BorderLayout.PAGE_START);
 
-        table_dashboard4.setModel(new javax.swing.table.DefaultTableModel(
+        table_users.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -712,13 +756,13 @@ public final class Debt extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table_dashboard4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(table_dashboard4);
-        if (table_dashboard4.getColumnModel().getColumnCount() > 0) {
-            table_dashboard4.getColumnModel().getColumn(0).setResizable(false);
-            table_dashboard4.getColumnModel().getColumn(1).setResizable(false);
-            table_dashboard4.getColumnModel().getColumn(2).setResizable(false);
-            table_dashboard4.getColumnModel().getColumn(3).setResizable(false);
+        table_users.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(table_users);
+        if (table_users.getColumnModel().getColumnCount() > 0) {
+            table_users.getColumnModel().getColumn(0).setResizable(false);
+            table_users.getColumnModel().getColumn(1).setResizable(false);
+            table_users.getColumnModel().getColumn(2).setResizable(false);
+            table_users.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel7.add(jScrollPane5, java.awt.BorderLayout.CENTER);
@@ -895,10 +939,9 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JLabel city_label;
     private javax.swing.JLabel created_at_label;
     private javax.swing.JButton dashboard_button;
-    private javax.swing.JPanel dashboard_holder;
-    private javax.swing.JPanel dashboard_holder1;
     private javax.swing.JScrollPane dashboard_scrollPane;
     private javax.swing.JButton export_import_button;
+    private javax.swing.JLabel female_count_label;
     private javax.swing.JPanel inner_dashboard;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -922,7 +965,6 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
@@ -936,7 +978,6 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
@@ -958,6 +999,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JButton logout_button;
+    private javax.swing.JLabel male__count_label;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel name_label;
@@ -967,12 +1009,14 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JLabel status_label;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table_dashboard3;
-    private javax.swing.JTable table_dashboard4;
     private javax.swing.JTable table_paid_debts;
     private javax.swing.JTable table_unpaid_debts;
+    private javax.swing.JTable table_users;
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
+    private javax.swing.JLabel unverified_count_label;
+    private javax.swing.JLabel user_count_label;
     private javax.swing.JLabel username_label;
     private javax.swing.JButton users_button;
     // End of variables declaration//GEN-END:variables
@@ -986,13 +1030,16 @@ public final class Debt extends javax.swing.JFrame {
         age_label.setText("Age: " + details.getAge());
         address_label.setText("Address: " + details.getAddress());
         created_at_label.setText("Created at: " + details.getCreated_at());
+        status_label.setText("Status: "+details.getPhone_verified_at());
     }
 
     void DesignComponents() {
 
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
+
         Components.CustomeGlassPane.putGlassPane(rootPane);
+        
         updateDebts();
 
         JButton buttons[]
@@ -1023,6 +1070,17 @@ public final class Debt extends javax.swing.JFrame {
     void updateDebts() {
         Services.Debts.UnpaidDebts(table_unpaid_debts);
         Services.Debts.PaidDebts(table_paid_debts);
+        Services.Users.Users(table_users);
+        Components.CustomTable.Design(table_paid_debts);
+        Components.CustomTable.Design(table_unpaid_debts);
+        Components.CustomTable.Design(table_users);
+       
+        Services.DashBoard dashboard = new Services.DashBoard();
+        user_count_label.setText("No. of users: "+dashboard.getCountUser());
+        unverified_count_label.setText("No. of unverified: "+dashboard.getCountUnverified());
+        male__count_label.setText("No. of Male: "+dashboard.getCountMale());
+        female_count_label.setText("No. of Female: "+dashboard.getCountFemale());
+        
     }
 
     void onGlass() {

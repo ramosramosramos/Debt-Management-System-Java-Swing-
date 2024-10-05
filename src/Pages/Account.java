@@ -15,6 +15,9 @@ public class Account {
     String age;
     String created_at;
 
+ 
+    String phone_verified_at;
+
     public Account(String username) {
         try {
 
@@ -29,6 +32,10 @@ public class Account {
                 address = rs.getString("address");
                 age = rs.getString("age");
                 created_at = rs.getString("created_at");
+                phone_verified_at = rs.getString("phone_verified_at");
+                if(phone_verified_at==null){
+                    phone_verified_at="Unverified";
+                }
 
             }
 
@@ -59,6 +66,9 @@ public class Account {
 
     public String getCreated_at() {
         return created_at;
+    }
+       public String getPhone_verified_at() {
+        return phone_verified_at;
     }
 
 }
