@@ -1,15 +1,15 @@
-package Debt;
+package Pages;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.*;
 import java.sql.Connection;
 import javax.swing.JButton;
 
-public final class DebtFrame extends javax.swing.JFrame {
+public final class Debt extends javax.swing.JFrame {
 
     Connection conn = null;
 
-    public DebtFrame() {
+    public Debt() {
         initComponents();
         DesignComponents();
         conn = Configuration.JavaConnection.getConnection();
@@ -494,7 +494,7 @@ public final class DebtFrame extends javax.swing.JFrame {
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
-            new DebtFrame().setVisible(true);
+            new Debt().setVisible(true);
 
         });
     }
