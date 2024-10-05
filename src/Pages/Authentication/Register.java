@@ -398,6 +398,11 @@ public final class Register extends javax.swing.JFrame {
             error_username_label.setText("Username is required");
             return;
         }
+        if(Tools.Validator.isValidUsername(username)==false){
+            error_username_label.setText("Not a valid username, please addd some numbers");
+            return;
+        }
+        
         if (password.isEmpty()) {
             error_password_label.setText("Password is required");
             return;
