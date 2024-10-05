@@ -2,20 +2,21 @@ package Debt;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.*;
+import java.sql.Connection;
 import javax.swing.JButton;
 
 public final class DebtFrame extends javax.swing.JFrame {
-    
-    int i;
-    
+
+    Connection conn = null;
+
     public DebtFrame() {
         initComponents();
         DesignComponents();
-        
+        conn = Configuration.JavaConnection.getConnection();
         dashboard_button.setBackground(new Color(51, 51, 51));
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -473,12 +474,12 @@ public final class DebtFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_buttonActionPerformed
 
     private void dashboard_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_buttonActionPerformed
-        
+
 
     }//GEN-LAST:event_dashboard_buttonActionPerformed
 
     private void unpaid_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unpaid_buttonActionPerformed
-        
+
 
     }//GEN-LAST:event_unpaid_buttonActionPerformed
 
@@ -489,12 +490,12 @@ public final class DebtFrame extends javax.swing.JFrame {
     private void paid_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paid_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_paid_buttonActionPerformed
-    
+
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
             new DebtFrame().setVisible(true);
-            
+
         });
     }
 
@@ -563,8 +564,7 @@ public final class DebtFrame extends javax.swing.JFrame {
         Components.CustomTable.Design(table_dashboard);
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
-    
-        
+
         JButton buttons[]
                 = {
                     dashboard_button,
@@ -576,7 +576,7 @@ public final class DebtFrame extends javax.swing.JFrame {
                     export_import_button,
                     settings_button,};
         ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this);
-        
+
     }
-    
+
 }
