@@ -3,6 +3,7 @@ package Pages.Authentication;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -16,6 +17,8 @@ public final class Register extends javax.swing.JFrame {
     public Register() {
         initComponents();
         designComponents();
+        
+ 
 
     }
 
@@ -28,7 +31,7 @@ public final class Register extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        link_label = new javax.swing.JLabel();
         pane = new javax.swing.JScrollPane();
         form = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
@@ -118,19 +121,19 @@ public final class Register extends javax.swing.JFrame {
 
         jPanel4.setPreferredSize(new java.awt.Dimension(989, 50));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel2.setText("Already have an account? Login");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        link_label.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        link_label.setText("Already have an account? Login");
+        link_label.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        link_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel2MousePressed(evt);
+                link_labelMousePressed(evt);
             }
         });
-        jPanel4.add(jLabel2);
+        jPanel4.add(link_label);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
-        form.setLayout(new java.awt.GridLayout(5, 100, 40, 5));
+        form.setLayout(new java.awt.GridLayout(6, 100, 40, 5));
 
         jPanel19.setPreferredSize(new java.awt.Dimension(300, 60));
         jPanel19.setLayout(new java.awt.GridLayout(2, 0, 0, 2));
@@ -344,7 +347,6 @@ public final class Register extends javax.swing.JFrame {
         address_label1.setPreferredSize(new java.awt.Dimension(400, 30));
         jPanel28.add(address_label1);
 
-        register_button.setBackground(new java.awt.Color(255, 102, 0));
         register_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         register_button.setText("Register");
         register_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -372,10 +374,10 @@ public final class Register extends javax.swing.JFrame {
 //        dispose();
     }//GEN-LAST:event_register_buttonActionPerformed
 
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+    private void link_labelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_labelMousePressed
         new Pages.Authentication.Login().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel2MousePressed
+    }//GEN-LAST:event_link_labelMousePressed
 
     void register() {
         String name = name_field.getText().trim();
@@ -388,7 +390,17 @@ public final class Register extends javax.swing.JFrame {
         String phone = phone_number_field.getText().trim();
         String age = age_field.getValue().toString().trim();
 
-   
+        if (name.isEmpty() && username.isEmpty() && password.isEmpty() && gender.equals("Select none") && city.isEmpty()
+                && address.isEmpty() && phone.isEmpty()) {
+            error_name_label.setText("Name is required");
+            error_username_label.setText("Username is required");
+            error_password_label.setText("Password is required");
+            error_gender_label.setText("Gender is required");
+            error_city_label.setText("City is required");
+            error_address.setText("Address is required");
+            error_phone_label.setText("Phone number is required");
+            return;
+        }
 
         if (name.isEmpty()) {
             error_name_label.setText("Name is required");
@@ -398,11 +410,11 @@ public final class Register extends javax.swing.JFrame {
             error_username_label.setText("Username is required");
             return;
         }
-        if(Tools.Validator.isValidUsername(username)==false){
+        if (Tools.Validator.isValidUsername(username) == false) {
             error_username_label.setText("Not a valid username, please addd some numbers");
             return;
         }
-        
+
         if (password.isEmpty()) {
             error_password_label.setText("Password is required");
             return;
@@ -411,7 +423,7 @@ public final class Register extends javax.swing.JFrame {
             error_confirm_pasword_label.setText("Password confirmation is required");
             return;
         }
-        if(!password.equals(confirm_password)){
+        if (!password.equals(confirm_password)) {
             error_password_label.setText("Password does not match");
             return;
         }
@@ -435,8 +447,12 @@ public final class Register extends javax.swing.JFrame {
             error_age_label.setText("Only 18 years above is required");
             return;
         }
-        Requests.RegisterRequest.authenticate(name, username, password, confirm_password, gender, city, address, phone, age);
+        boolean isAllowed = Controllers.RegisterController.authenticate(name, username, password, gender, city, address, phone, age);
 
+        if (isAllowed == true) {
+            new Pages.Debt().setVisible(true);
+            dispose();
+        }
     }
 
     public static void main(String args[]) {
@@ -471,12 +487,8 @@ public final class Register extends javax.swing.JFrame {
     private javax.swing.JLabel error_phone_label;
     private javax.swing.JLabel error_username_label;
     private javax.swing.JPanel form;
-    private javax.swing.JPanel form_panel;
-    private javax.swing.JPanel form_panel1;
-    private javax.swing.JPanel form_panel2;
     private javax.swing.JComboBox gender_field;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
@@ -491,9 +503,7 @@ public final class Register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel link_label;
     private javax.swing.JTextField name_field;
     private javax.swing.JLabel name_label;
     private javax.swing.JLabel name_label1;
@@ -512,6 +522,8 @@ public final class Register extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     void designComponents() {
+        ServiceMethod.Handle.HoverLink(link_label);
+
         resetErrorField(name_field, error_name_label);
         resetErrorField(username_field, error_username_label);
         resetErrorField(password_field, error_password_label);

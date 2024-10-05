@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -83,5 +84,27 @@ public class Handle {
 
             });
         }
+    }
+    
+    
+    
+    public static void HoverLink(JLabel link_label){
+        link_label.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+              link_label.setForeground(new Color(255,102,0));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                link_label.setForeground(new Color(240,240,240));
+            }
+            
+            
+
+        
+        });
+        
     }
 }

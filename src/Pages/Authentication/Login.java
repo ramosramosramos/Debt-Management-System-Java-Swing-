@@ -1,4 +1,3 @@
-
 package Pages.Authentication;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
@@ -7,6 +6,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        ServiceMethod.Handle.HoverLink(link_label);
     }
 
     @SuppressWarnings("unchecked")
@@ -22,7 +22,7 @@ public class Login extends javax.swing.JFrame {
         password_field = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         login_button = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        link_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -58,7 +58,6 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2);
 
-        login_button.setBackground(new java.awt.Color(255, 102, 0));
         login_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         login_button.setText("Login");
         login_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -70,15 +69,15 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(login_button);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel2.setText("Don't have an account? Register");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        link_label.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        link_label.setText("Don't have an account? Register");
+        link_label.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        link_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel2MousePressed(evt);
+                link_labelMousePressed(evt);
             }
         });
-        jPanel3.add(jLabel2);
+        jPanel3.add(link_label);
 
         getContentPane().add(jPanel3);
 
@@ -87,14 +86,14 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_buttonActionPerformed
-  new Pages.Debt().setVisible(true);
-  dispose();
+        new Pages.Debt().setVisible(true);
+        dispose();
     }//GEN-LAST:event_login_buttonActionPerformed
 
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+    private void link_labelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_labelMousePressed
         new Pages.Authentication.Register().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel2MousePressed
+    }//GEN-LAST:event_link_labelMousePressed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -105,10 +104,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel link_label;
     private javax.swing.JButton login_button;
     private javax.swing.JTextField password_field;
     private javax.swing.JLabel password_label;
