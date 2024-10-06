@@ -16,24 +16,25 @@ import net.proteanit.sql.DbUtils;
  * @author User
  */
 public class Transactions {
-      static Connection conn = Configurations.JavaConnection.getConnection();
-   
-    public static void History(JTable table){
+
+    static Connection conn = Configurations.JavaConnection.getConnection();
+
+    public static void History(JTable table) {
 
         try {
             PreparedStatement pst = conn.prepareStatement(""
                     + "Select "
                     + "transactions.id as 'ID',"
-                    + "transactions.user_id as 'User ID',"
-                    + "transactions.debt_id as 'Debt ID',"
+                    + "users.name as 'Name',"
                     + "transactions.amount_paid as 'Amount paid',"
                     + "transactions.balance as 'Balance',"
-                    + "created_at as 'Date' from transactions");
-        
+                    + "debts.amount 'Amount borrowed' ,"
+                    + "transactions.created_at as 'Date' from transactions join debts on transactions.debt_id = debts.id"
+                    + " join users on debts.user_id=users.id  ");
+
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
-           
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
