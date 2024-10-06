@@ -90,7 +90,7 @@ public final class Debt extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        table_dashboard3 = new javax.swing.JTable();
+        table_transactions = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -697,7 +697,7 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel6.add(jPanel14, java.awt.BorderLayout.PAGE_START);
 
-        table_dashboard3.setModel(new javax.swing.table.DefaultTableModel(
+        table_transactions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -716,13 +716,13 @@ public final class Debt extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table_dashboard3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(table_dashboard3);
-        if (table_dashboard3.getColumnModel().getColumnCount() > 0) {
-            table_dashboard3.getColumnModel().getColumn(0).setResizable(false);
-            table_dashboard3.getColumnModel().getColumn(1).setResizable(false);
-            table_dashboard3.getColumnModel().getColumn(2).setResizable(false);
-            table_dashboard3.getColumnModel().getColumn(3).setResizable(false);
+        table_transactions.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(table_transactions);
+        if (table_transactions.getColumnModel().getColumnCount() > 0) {
+            table_transactions.getColumnModel().getColumn(0).setResizable(false);
+            table_transactions.getColumnModel().getColumn(1).setResizable(false);
+            table_transactions.getColumnModel().getColumn(2).setResizable(false);
+            table_transactions.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel6.add(jScrollPane4, java.awt.BorderLayout.CENTER);
@@ -1008,8 +1008,8 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JButton settings_button;
     private javax.swing.JLabel status_label;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JTable table_dashboard3;
     private javax.swing.JTable table_paid_debts;
+    private javax.swing.JTable table_transactions;
     private javax.swing.JTable table_unpaid_debts;
     private javax.swing.JTable table_users;
     private javax.swing.JPanel topPanel;
@@ -1071,9 +1071,11 @@ public final class Debt extends javax.swing.JFrame {
         Services.Debts.UnpaidDebts(table_unpaid_debts);
         Services.Debts.PaidDebts(table_paid_debts);
         Services.Users.Users(table_users);
+        Services.Transactions.History(table_transactions);
         Components.CustomTable.Design(table_paid_debts);
         Components.CustomTable.Design(table_unpaid_debts);
         Components.CustomTable.Design(table_users);
+        Components.CustomTable.Design(table_transactions);
        
         Services.DashBoard dashboard = new Services.DashBoard();
         user_count_label.setText("No. of users: "+dashboard.getCountUser());

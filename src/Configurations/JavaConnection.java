@@ -13,9 +13,11 @@ public class JavaConnection {
             Configurations.Database.createDatabase(conn);
             Configurations.Database.useDatabase(conn);
 
+            
             Configurations.CreateTable.users(conn);
             Configurations.CreateTable.debts(conn);
             Configurations.CreateTable.validations(conn);
+            Configurations.CreateTable.transactions(conn);
             return conn;
 
         } catch (ClassNotFoundException | SQLException e) {

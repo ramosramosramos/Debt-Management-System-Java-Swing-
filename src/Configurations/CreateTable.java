@@ -36,7 +36,6 @@ public class CreateTable {
             try (PreparedStatement create_table_debts = conn.prepareStatement("Create table if not exists debts("
                     + "id int primary key auto_increment,"
                     + "user_id int not null,"
-                    
                     + "creditor varchar(255) default 'Debt Company',"
                     + "amount decimal(10,2) not null ,"
                     + "amount_paid decimal(10,2) not null,"
@@ -49,7 +48,6 @@ public class CreateTable {
                 create_table_debts.close();
             }
 
-            
             System.out.println("Created table debts");
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -65,11 +63,35 @@ public class CreateTable {
                     + "type varchar(255) not null,"
                     + "expiry_date varchar(255) not null,"
                     + "created_at varchar(255) not null,"
-                    + "foreign key (user_id) references users(id))")) {
+                    + "foreign key (user_id) references users(id) on delete cascade)")) {
                 create_table_validations.execute();
                 create_table_validations.close();
             }
             System.out.println("Created table validations");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void transactions(Connection conn) {
+        try {
+
+            try (PreparedStatement create_table_transactions = conn.prepareStatement("create table if not exists transactions("
+                    + " id int primary key auto_increment,"
+                    + "user_id int not null,"
+                    + "debt_id int not null,"
+                    + "amount_paid decimal(10,2) not null,"
+                    + "balance decimal(10,2),"
+                    + "payment_method varchar(255) not null,"
+                    + "created_at varchar(255) not null,"
+                    + "deleted_at varchar(255) default 'null',"
+                    + "foreign key (user_id) references users(id) on delete cascade,"
+                    + "foreign key (debt_id) references debts(id) on delete cascade )")) {
+                create_table_transactions.execute();
+                create_table_transactions.close();
+                
+            }
+            System.out.println("Created table transactions");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Services;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,15 +17,22 @@ public class Users {
     public static void Users(JTable table) {
         try {
             PreparedStatement pst = conn.prepareStatement("Select"
-                    + " id as 'ID',"
-                    + "name as 'Name', "
-                    + "role as 'Role'"
-                    + "from users");
+                    + " users.id as 'ID',"
+                    + "users.name as 'Name', "
+                    + "users.role as 'Role',"
+                    + "validations.type as 'Valid ID' "
+                    + "from users join validations  on users.id=validations.user_id");
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        
+       
     }
+    public static void main(String[] args) {
+        new Pages.Debt("kent1").setVisible(true);
+    }
+    
 }
