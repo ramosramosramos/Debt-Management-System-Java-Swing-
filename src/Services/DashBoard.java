@@ -26,6 +26,7 @@ public class DashBoard {
 
     String unpaidUser;
     String paidUser;
+    String transactionCount;
 
     public DashBoard() {
         try {
@@ -49,6 +50,18 @@ public class DashBoard {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        
+        try {
+            PreparedStatement pst  = conn.prepareStatement("Select count(id) as 'transaction_count' from transactions");
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                transactionCount = rs.getString("transaction_count");
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        
+        
     }
 
     public String getCountUser() {
@@ -72,5 +85,8 @@ public class DashBoard {
 
     public String getPaidUser() {
         return paidUser;
+    }
+    public String getTranctionCount() {
+        return transactionCount;
     }
 }

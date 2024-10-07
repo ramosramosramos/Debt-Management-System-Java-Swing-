@@ -82,7 +82,6 @@ public class CreateTable {
                     + "debt_id int not null,"
                     + "amount_paid decimal(10,2) not null,"
                     + "balance decimal(10,2),"
-                    + "payment_method varchar(255) not null,"
                     + "created_at varchar(255) not null,"
                     + "deleted_at varchar(255) default 'null',"
                     + "foreign key (user_id) references users(id) on delete cascade,"

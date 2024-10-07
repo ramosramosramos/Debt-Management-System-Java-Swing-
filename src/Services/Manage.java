@@ -2,6 +2,7 @@ package Services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JLabel;
 
 public class Manage {
@@ -34,7 +35,7 @@ public class Manage {
             insertValidations.setString(4, date);
             insertValidations.executeUpdate();
             success_label.setText("Successfully added.");
-            Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE);
+            Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, true);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -50,9 +51,6 @@ public class Manage {
                 + "Amount paid: " + amount_paid + ", "
                 + "Debt borrowed: " + date_borrowed + ", "
                 + "time: " + date;
-        
-        
-
 
         try {
             PreparedStatement updateDebts
@@ -65,10 +63,37 @@ public class Manage {
             updateDebts.executeUpdate();
 
             success_label.setText("Successfully updated.");
-            Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE);
+            Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, true);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    static double balance = 0.0;
+
+    public static void createTransactions(String debt_id, String user_id, String amount_paid, double balance, String IP_ADDRESS, String SEND_TO) {
+        String date = Tools.Date.getDate();
+        String MESSAGE = "Hello Admin,new transactions has been created:"
+                + "Debt ID:" + debt_id + ", "
+                + "User ID: " + user_id + ", "
+                + "Amount paid: " + amount_paid + ", "
+                + "Balance:" + balance + ", "
+                + "Time: " + date;
+        Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, false);
+
+        try {
+            PreparedStatement pst = conn.prepareStatement("Insert into transactions(user_id,debt_id,amount_paid,balance,created_at)"
+                    + "values(?,?,?,?,?)");
+            pst.setString(1, user_id);
+            pst.setString(2, debt_id);
+            pst.setString(3, amount_paid);
+            pst.setDouble(4, balance);
+            pst.setString(5, date);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
     }
 }

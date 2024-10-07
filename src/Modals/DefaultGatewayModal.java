@@ -40,7 +40,7 @@ String username ;
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel2.setText("Here's the link if not installed and install it to you phone:");
+        jLabel2.setText("Here's the link if not installed and install it to your phone:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 420, 60));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

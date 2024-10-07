@@ -77,12 +77,22 @@ public class AddCutomerPanel extends javax.swing.JPanel {
                 user_id_fieldActionPerformed(evt);
             }
         });
+        user_id_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                user_id_fieldKeyTyped(evt);
+            }
+        });
         add(user_id_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 350, 40));
 
         amount_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         amount_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 amount_fieldActionPerformed(evt);
+            }
+        });
+        amount_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                amount_fieldKeyTyped(evt);
             }
         });
         add(amount_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 350, 40));
@@ -151,6 +161,14 @@ public class AddCutomerPanel extends javax.swing.JPanel {
     private void expiration_date_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expiration_date_fieldActionPerformed
         addCustomer();
     }//GEN-LAST:event_expiration_date_fieldActionPerformed
+
+    private void amount_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amount_fieldKeyTyped
+   ServiceMethod.Bann.Characters(evt);      
+    }//GEN-LAST:event_amount_fieldKeyTyped
+
+    private void user_id_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_user_id_fieldKeyTyped
+     ServiceMethod.Bann.Characters(evt);
+    }//GEN-LAST:event_user_id_fieldKeyTyped
 
     void addCustomer() {
         String user_id = user_id_field.getText().trim();

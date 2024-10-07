@@ -19,7 +19,7 @@ public class Alert {
 
     static InputStream inputStream = null;
 
-    public static void Admin(String IP_ADDRESS, String SEND_TO, String MESSSAGE) {
+    public static void Admin(String IP_ADDRESS, String SEND_TO, String MESSSAGE, boolean appear) {
 
         String FINAL_MESSAGE = MESSSAGE.replaceAll("\\s", "+");
         try {
@@ -29,7 +29,9 @@ public class Alert {
             URL url = new URL(link);
             inputStream = url.openStream();
             inputStream.close();
-            JOptionPane.showMessageDialog(null, "Message to admin has been sent");
+            if (appear == true) {
+                JOptionPane.showMessageDialog(null, "Message to admin has been sent");
+            }
 
         } catch (IOException | HeadlessException e) {
             System.err.println(e.getMessage());

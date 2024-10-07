@@ -22,7 +22,6 @@ public final class Debt extends javax.swing.JFrame {
         DesignComponents();
         this.globalUsername = username;
         dashboard_button.setBackground(new Color(51, 51, 51));
-        System.out.println(username);
         IP_ADDRESS = Tools.IP.getIPAddress();
 
         if (username.isEmpty()) {
@@ -31,6 +30,8 @@ public final class Debt extends javax.swing.JFrame {
             globalUsername = "kent1";
         }
         setAccountDetails(username);
+        
+
 
     }
 
@@ -76,6 +77,7 @@ public final class Debt extends javax.swing.JFrame {
         jPanel30 = new javax.swing.JPanel();
         paid_count_label = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
+        transaction_count_label = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
@@ -99,7 +101,6 @@ public final class Debt extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -180,7 +181,7 @@ public final class Debt extends javax.swing.JFrame {
 
         menuPanel.add(jPanel20);
 
-        dashboard_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        dashboard_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         dashboard_button.setText("Dashboard");
         dashboard_button.setBorderPainted(false);
         dashboard_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -194,7 +195,7 @@ public final class Debt extends javax.swing.JFrame {
         });
         menuPanel.add(dashboard_button);
 
-        unpaid_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        unpaid_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         unpaid_button.setText("Unpaid customer");
         unpaid_button.setBorderPainted(false);
         unpaid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -208,7 +209,7 @@ public final class Debt extends javax.swing.JFrame {
         });
         menuPanel.add(unpaid_button);
 
-        paid_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        paid_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         paid_button.setText("Paid cutomer");
         paid_button.setBorderPainted(false);
         paid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -222,7 +223,7 @@ public final class Debt extends javax.swing.JFrame {
         });
         menuPanel.add(paid_button);
 
-        add_customer_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        add_customer_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         add_customer_button.setText("Manage");
         add_customer_button.setBorderPainted(false);
         add_customer_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -231,7 +232,7 @@ public final class Debt extends javax.swing.JFrame {
         add_customer_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(add_customer_button);
 
-        transactions_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        transactions_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         transactions_button.setText("Transactions");
         transactions_button.setBorderPainted(false);
         transactions_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -240,7 +241,7 @@ public final class Debt extends javax.swing.JFrame {
         transactions_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(transactions_button);
 
-        users_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        users_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         users_button.setText("Users  (customer's details)");
         users_button.setBorderPainted(false);
         users_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -249,7 +250,7 @@ public final class Debt extends javax.swing.JFrame {
         users_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(users_button);
 
-        export_import_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        export_import_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         export_import_button.setText("Export/Import");
         export_import_button.setBorderPainted(false);
         export_import_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -263,7 +264,7 @@ public final class Debt extends javax.swing.JFrame {
         });
         menuPanel.add(export_import_button);
 
-        settings_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        settings_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         settings_button.setText("Settings");
         settings_button.setBorderPainted(false);
         settings_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -272,6 +273,7 @@ public final class Debt extends javax.swing.JFrame {
         settings_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(settings_button);
 
+        account_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         account_button.setText("Account");
         account_button.setBorderPainted(false);
         account_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -279,7 +281,7 @@ public final class Debt extends javax.swing.JFrame {
         account_button.setPreferredSize(new java.awt.Dimension(190, 35));
         menuPanel.add(account_button);
 
-        logout_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        logout_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         logout_button.setText("Logout");
         logout_button.setBorderPainted(false);
         logout_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -465,15 +467,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel29.setBackground(new java.awt.Color(51, 51, 51));
         jPanel29.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        transaction_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        transaction_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        transaction_count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(transaction_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(transaction_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel29);
@@ -719,16 +731,6 @@ public final class Debt extends javax.swing.JFrame {
         });
         jPanel13.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton3.setText("Add Payment");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel13.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 330, 40));
-
         jPanel5.add(jPanel13, java.awt.BorderLayout.CENTER);
 
         tabbedPane.addTab("Manage", jPanel5);
@@ -956,10 +958,6 @@ public final class Debt extends javax.swing.JFrame {
         updateDebts();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
         if (IP_ADDRESS == null || IP_ADDRESS.isEmpty()) {
@@ -1007,7 +1005,6 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JLabel female_count_label;
     private javax.swing.JPanel inner_dashboard;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1076,6 +1073,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JTable table_unpaid_debts;
     private javax.swing.JTable table_users;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JLabel transaction_count_label;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
     private javax.swing.JLabel unpaid_count_label;
@@ -1150,6 +1148,7 @@ public final class Debt extends javax.swing.JFrame {
         female_count_label.setText("No. of Female: " + dashboard.getCountFemale());
         unpaid_count_label.setText("No. of unpaid: "+dashboard.getUnpaidUser());
         paid_count_label.setText("No of paid: "+dashboard.getPaidUser());
+        transaction_count_label.setText("No. of transactions: "+dashboard.getTranctionCount());
 
     }
 
@@ -1172,8 +1171,9 @@ public final class Debt extends javax.swing.JFrame {
         String amount = table.getValueAt(table.getSelectedRow(), 3).toString();
         String amount_paid = table.getValueAt(table.getSelectedRow(), 4).toString();
         String date_borrowed = table.getValueAt(table.getSelectedRow(), 5).toString();
+        String user_id = table.getValueAt(table.getSelectedRow(), 1).toString();
 
-        Object[] user = {id, amount, amount_paid, date_borrowed};
+        Object[] user = {id, amount, amount_paid, date_borrowed,user_id};
 
         return user;
     }

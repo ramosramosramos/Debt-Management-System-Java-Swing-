@@ -286,6 +286,11 @@ public final class Register extends javax.swing.JFrame {
                 phone_number_fieldActionPerformed(evt);
             }
         });
+        phone_number_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                phone_number_fieldKeyTyped(evt);
+            }
+        });
         jPanel21.add(phone_number_field);
 
         form.add(jPanel21);
@@ -428,6 +433,10 @@ public final class Register extends javax.swing.JFrame {
     private void phone_number_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phone_number_fieldActionPerformed
         register();
     }//GEN-LAST:event_phone_number_fieldActionPerformed
+
+    private void phone_number_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phone_number_fieldKeyTyped
+        ServiceMethod.Bann.Characters(evt);
+    }//GEN-LAST:event_phone_number_fieldKeyTyped
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -577,7 +586,7 @@ public final class Register extends javax.swing.JFrame {
         if (isAllowed == true) {
             new Pages.Debt(username).setVisible(true);
             dispose();
-        }else{
+        } else {
             error_username_label.setText("Invalid credentials");
         }
     }

@@ -134,7 +134,7 @@
                 <Component class="javax.swing.JButton" name="dashboard_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Dashboard"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -157,7 +157,7 @@
                 <Component class="javax.swing.JButton" name="unpaid_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Unpaid customer"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -180,7 +180,7 @@
                 <Component class="javax.swing.JButton" name="paid_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Paid cutomer"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -203,7 +203,7 @@
                 <Component class="javax.swing.JButton" name="add_customer_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Manage"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -223,7 +223,7 @@
                 <Component class="javax.swing.JButton" name="transactions_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Transactions"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -243,7 +243,7 @@
                 <Component class="javax.swing.JButton" name="users_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Users  (customer&apos;s details)"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -263,7 +263,7 @@
                 <Component class="javax.swing.JButton" name="export_import_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Export/Import"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -286,7 +286,7 @@
                 <Component class="javax.swing.JButton" name="settings_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Settings"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -305,6 +305,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="account_button">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Account"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -322,7 +325,7 @@
                 <Component class="javax.swing.JButton" name="logout_button">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="11" style="0"/>
+                      <Font name="SansSerif" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Logout"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
@@ -668,15 +671,34 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="250" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="transaction_count_label" pref="230" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="transaction_count_label" min="-2" pref="46" max="-2" attributes="0"/>
+                                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                 </DimensionLayout>
                               </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="transaction_count_label">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="SansSerif" size="14" style="1"/>
+                                    </Property>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="No. of users:"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
                             </Container>
                             <Container class="javax.swing.JPanel" name="jPanel32">
                               <Properties>
@@ -1098,23 +1120,6 @@
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="30" y="50" width="330" height="40"/>
-                            </Constraint>
-                          </Constraints>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="jButton3">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="SansSerif" size="14" style="1"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Add Payment"/>
-                            <Property name="borderPainted" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-                          </Events>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="120" width="330" height="40"/>
                             </Constraint>
                           </Constraints>
                         </Component>

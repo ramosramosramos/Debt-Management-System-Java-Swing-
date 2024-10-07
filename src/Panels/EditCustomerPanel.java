@@ -13,22 +13,28 @@ public class EditCustomerPanel extends javax.swing.JPanel {
 
     String globalUsername;
     String IP_ADDRESS;
+    String user_id;
     Object[] user;
-    public EditCustomerPanel(String useranme, String IP_ADDRESS,Object[] user) {
+    double balance = 0.0;
+    double globalAmount_paid;
+
+    public EditCustomerPanel(String useranme, String IP_ADDRESS, Object[] user) {
         initComponents();
         this.globalUsername = useranme;
         this.IP_ADDRESS = IP_ADDRESS;
         this.user = user;
-        
+
         debt_id_field.setText(user[0].toString());
         amount_field.setText(user[1].toString());
         amount_paid_field.setText(user[2].toString());
         date_borrowed_field.setText(user[3].toString());
+        user_id = user[4].toString();
+        globalAmount_paid = Double.valueOf(user[2].toString());
+
         String date = Tools.Date.getDate();
         expiration_label.setText("Expiration date(Valid ID) '" + date + "'");
 
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,12 +83,22 @@ public class EditCustomerPanel extends javax.swing.JPanel {
                 debt_id_fieldActionPerformed(evt);
             }
         });
+        debt_id_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                debt_id_fieldKeyTyped(evt);
+            }
+        });
         add(debt_id_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 350, 40));
 
         amount_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         amount_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 amount_fieldActionPerformed(evt);
+            }
+        });
+        amount_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                amount_fieldKeyTyped(evt);
             }
         });
         add(amount_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 350, 40));
@@ -107,6 +123,11 @@ public class EditCustomerPanel extends javax.swing.JPanel {
         amount_paid_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 amount_paid_fieldActionPerformed(evt);
+            }
+        });
+        amount_paid_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                amount_paid_fieldKeyTyped(evt);
             }
         });
         add(amount_paid_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 350, 40));
@@ -152,11 +173,24 @@ public class EditCustomerPanel extends javax.swing.JPanel {
         updateCustomerDebts();
     }//GEN-LAST:event_date_borrowed_fieldActionPerformed
 
+    private void amount_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amount_fieldKeyTyped
+        ServiceMethod.Bann.Characters(evt);
+    }//GEN-LAST:event_amount_fieldKeyTyped
+
+    private void amount_paid_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_amount_paid_fieldKeyTyped
+        ServiceMethod.Bann.Characters(evt);
+    }//GEN-LAST:event_amount_paid_fieldKeyTyped
+
+    private void debt_id_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_debt_id_fieldKeyTyped
+        ServiceMethod.Bann.Characters(evt);
+    }//GEN-LAST:event_debt_id_fieldKeyTyped
+
     void updateCustomerDebts() {
         String debt_id = debt_id_field.getText().trim();
         String amount = amount_field.getText().trim();
         String amount_paid = amount_paid_field.getText().trim();
         String date_borrowed = date_borrowed_field.getText().trim();
+        balance = Double.valueOf(amount) - Double.valueOf(amount_paid);
 
         if (debt_id.isEmpty() && amount.isEmpty() && amount_paid.isEmpty() && date_borrowed.isEmpty()) {
             error_user_id.setText("Debts's ID is required");
@@ -182,6 +216,10 @@ public class EditCustomerPanel extends javax.swing.JPanel {
         Pages.Account account = new Pages.Account(globalUsername);
         Services.Manage.updateCustomerDebts(debt_id, amount, amount_paid, date_borrowed, success_label, IP_ADDRESS, account.getPhone());
 
+        if (Double.valueOf(amount_paid) > globalAmount_paid) {
+            Services.Manage.createTransactions(debt_id, user_id, amount_paid, balance, IP_ADDRESS, account.getPhone());
+
+        }
         debt_id_field.setText("");
         amount_field.setText("");
         amount_paid_field.setText("");
