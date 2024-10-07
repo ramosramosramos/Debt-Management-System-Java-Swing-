@@ -2,22 +2,38 @@ package Pages;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import java.sql.Connection;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JButton;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 
 public final class Debt extends javax.swing.JFrame {
 
     Connection conn = null;
+    String globalUsername;
+    String IP_ADDRESS = null;
 
     public Debt(String username) {
         initComponents();
         conn = Configurations.JavaConnection.getConnection();
         DesignComponents();
+        this.globalUsername = username;
         dashboard_button.setBackground(new Color(51, 51, 51));
+
+          IP_ADDRESS = Tools.IP.getIPAddress();
+        
         if (username.isEmpty()) {
             username = "kent1";
+            globalUsername = "kent1";
         }
         setAccountDetails(username);
 
@@ -27,6 +43,8 @@ public final class Debt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        unpaid_pop_menu = new javax.swing.JPopupMenu();
+        update_unpaid_menuItem = new javax.swing.JMenuItem();
         background = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         menu_button = new Components.CustomButton(this);
@@ -84,7 +102,6 @@ public final class Debt extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -119,7 +136,22 @@ public final class Debt extends javax.swing.JFrame {
         age_label = new javax.swing.JLabel();
         created_at_label = new javax.swing.JLabel();
 
+        update_unpaid_menuItem.setText("Edit");
+        update_unpaid_menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_unpaid_menuItemActionPerformed(evt);
+            }
+        });
+        unpaid_pop_menu.add(update_unpaid_menuItem);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         background.setLayout(new java.awt.BorderLayout());
 
@@ -591,6 +623,11 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         table_unpaid_debts.getTableHeader().setReorderingAllowed(false);
+        table_unpaid_debts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_unpaid_debtsMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(table_unpaid_debts);
         if (table_unpaid_debts.getColumnModel().getColumnCount() > 0) {
             table_unpaid_debts.getColumnModel().getColumn(0).setResizable(false);
@@ -664,16 +701,6 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         jPanel13.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
-
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton2.setText("Add Cutomer");
-        jButton2.setBorderPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel13.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 330, 40));
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton3.setText("Edit Cutomer");
@@ -907,17 +934,34 @@ public final class Debt extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         onGlass();
-        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(), "Add Customer", JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(globalUsername, IP_ADDRESS), "Add Customer", JOptionPane.DEFAULT_OPTION);
         offGlass();
+        updateDebts();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+//        if (IP_ADDRESS == null || IP_ADDRESS.isEmpty()) {
+//            String ip = JOptionPane.showInputDialog("Please input your IP address first to continue");
+//            IP_ADDRESS = ip;
+//        }
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void table_unpaid_debtsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_unpaid_debtsMousePressed
+        handleTablePropMenu(evt, unpaid_pop_menu, table_unpaid_debts);
+    }//GEN-LAST:event_table_unpaid_debtsMousePressed
+
+    private void update_unpaid_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_unpaid_menuItemActionPerformed
+        Object[] user = getTableDebtsUnPaid(table_unpaid_debts);
+        onGlass();
+        JOptionPane.showMessageDialog(null, new Panels.EditCustomerPanel(globalUsername, IP_ADDRESS, user), "Edit Customer", JOptionPane.DEFAULT_OPTION);
+        offGlass();
+        updateDebts();
+    }//GEN-LAST:event_update_unpaid_menuItemActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -944,7 +988,6 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JLabel female_count_label;
     private javax.swing.JPanel inner_dashboard;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1015,7 +1058,9 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
+    private javax.swing.JPopupMenu unpaid_pop_menu;
     private javax.swing.JLabel unverified_count_label;
+    private javax.swing.JMenuItem update_unpaid_menuItem;
     private javax.swing.JLabel user_count_label;
     private javax.swing.JLabel username_label;
     private javax.swing.JButton users_button;
@@ -1030,7 +1075,7 @@ public final class Debt extends javax.swing.JFrame {
         age_label.setText("Age: " + details.getAge());
         address_label.setText("Address: " + details.getAddress());
         created_at_label.setText("Created at: " + details.getCreated_at());
-        status_label.setText("Status: "+details.getPhone_verified_at());
+        status_label.setText("Status: " + details.getPhone_verified_at());
     }
 
     void DesignComponents() {
@@ -1039,7 +1084,7 @@ public final class Debt extends javax.swing.JFrame {
         Components.CustomTabbedPane.Design(tabbedPane);
 
         Components.CustomeGlassPane.putGlassPane(rootPane);
-        
+
         updateDebts();
 
         JButton buttons[]
@@ -1067,7 +1112,7 @@ public final class Debt extends javax.swing.JFrame {
         offGlass();
     }
 
-    void updateDebts() {
+    public void updateDebts() {
         Services.Debts.UnpaidDebts(table_unpaid_debts);
         Services.Debts.PaidDebts(table_paid_debts);
         Services.Users.Users(table_users);
@@ -1076,13 +1121,13 @@ public final class Debt extends javax.swing.JFrame {
         Components.CustomTable.Design(table_unpaid_debts);
         Components.CustomTable.Design(table_users);
         Components.CustomTable.Design(table_transactions);
-       
+
         Services.DashBoard dashboard = new Services.DashBoard();
-        user_count_label.setText("No. of users: "+dashboard.getCountUser());
-        unverified_count_label.setText("No. of unverified: "+dashboard.getCountUnverified());
-        male__count_label.setText("No. of Male: "+dashboard.getCountMale());
-        female_count_label.setText("No. of Female: "+dashboard.getCountFemale());
-        
+        user_count_label.setText("No. of users: " + dashboard.getCountUser());
+        unverified_count_label.setText("No. of unverified: " + dashboard.getCountUnverified());
+        male__count_label.setText("No. of Male: " + dashboard.getCountMale());
+        female_count_label.setText("No. of Female: " + dashboard.getCountFemale());
+
     }
 
     void onGlass() {
@@ -1093,4 +1138,26 @@ public final class Debt extends javax.swing.JFrame {
         Components.CustomeGlassPane.offGlassPane(rootPane);
     }
 
+    void handleTablePropMenu(java.awt.event.MouseEvent evt, JPopupMenu popMenu, JTable table) {
+        if (SwingUtilities.isRightMouseButton(evt)) {
+            popMenu.show(table, evt.getX(), evt.getY());
+        }
+    }
+
+    public Object[] getTableDebtsUnPaid(JTable table) {
+        String id = table.getValueAt(table.getSelectedRow(), 0).toString();
+        String amount = table.getValueAt(table.getSelectedRow(), 2).toString();
+        String amount_paid = table.getValueAt(table.getSelectedRow(), 3).toString();
+        String date_borrowed = table.getValueAt(table.getSelectedRow(), 4).toString();
+
+        Object[] user = {id, amount, amount_paid, date_borrowed};
+
+        return user;
+    }
+
+    
+    
+  
+    
+    
 }

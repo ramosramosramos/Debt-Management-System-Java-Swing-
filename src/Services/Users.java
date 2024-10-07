@@ -20,7 +20,8 @@ public class Users {
                     + " users.id as 'ID',"
                     + "users.name as 'Name', "
                     + "users.role as 'Role',"
-                    + "validations.type as 'Valid ID' "
+                    + "validations.type as 'Valid ID',"
+                    + "validations.expiry_date as 'ID expiration' "
                     + "from users join validations  on users.id=validations.user_id");
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
