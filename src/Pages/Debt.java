@@ -2,13 +2,7 @@ package Pages;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import java.sql.Connection;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JButton;
 
 import javax.swing.JOptionPane;
@@ -28,10 +22,11 @@ public final class Debt extends javax.swing.JFrame {
         DesignComponents();
         this.globalUsername = username;
         dashboard_button.setBackground(new Color(51, 51, 51));
+        System.out.println(username);
+        IP_ADDRESS = Tools.IP.getIPAddress();
 
-          IP_ADDRESS = Tools.IP.getIPAddress();
-        
         if (username.isEmpty()) {
+
             username = "kent1";
             globalUsername = "kent1";
         }
@@ -244,7 +239,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(transactions_button);
 
         users_button.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        users_button.setText("Users");
+        users_button.setText("Users  (customer's details)");
         users_button.setBorderPainted(false);
         users_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         users_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -703,7 +698,7 @@ public final class Debt extends javax.swing.JFrame {
         jPanel13.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton3.setText("Edit Cutomer");
+        jButton3.setText("Add Payment");
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -714,7 +709,7 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel5.add(jPanel13, java.awt.BorderLayout.CENTER);
 
-        tabbedPane.addTab("Add Customer", jPanel5);
+        tabbedPane.addTab("Manage", jPanel5);
 
         jPanel6.setLayout(new java.awt.BorderLayout());
 
@@ -940,14 +935,16 @@ public final class Debt extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-//        if (IP_ADDRESS == null || IP_ADDRESS.isEmpty()) {
-//            String ip = JOptionPane.showInputDialog("Please input your IP address first to continue");
-//            IP_ADDRESS = ip;
-//        }
+
+        if (IP_ADDRESS == null || IP_ADDRESS.isEmpty()) {
+            new Modals.DefaultGatewayModal(globalUsername).setVisible(true);
+            dispose();
+
+        }
 
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -1146,18 +1143,13 @@ public final class Debt extends javax.swing.JFrame {
 
     public Object[] getTableDebtsUnPaid(JTable table) {
         String id = table.getValueAt(table.getSelectedRow(), 0).toString();
-        String amount = table.getValueAt(table.getSelectedRow(), 2).toString();
-        String amount_paid = table.getValueAt(table.getSelectedRow(), 3).toString();
-        String date_borrowed = table.getValueAt(table.getSelectedRow(), 4).toString();
+        String amount = table.getValueAt(table.getSelectedRow(), 3).toString();
+        String amount_paid = table.getValueAt(table.getSelectedRow(), 4).toString();
+        String date_borrowed = table.getValueAt(table.getSelectedRow(), 5).toString();
 
         Object[] user = {id, amount, amount_paid, date_borrowed};
 
         return user;
     }
 
-    
-    
-  
-    
-    
 }

@@ -161,7 +161,7 @@ public class EditCustomerPanel extends javax.swing.JPanel {
         if (debt_id.isEmpty() && amount.isEmpty() && amount_paid.isEmpty() && date_borrowed.isEmpty()) {
             error_user_id.setText("Debts's ID is required");
             error_amount.setText("Amount is required");
-            errror_amount_paid.setText("Type of Valid ID is required");
+            errror_amount_paid.setText("Amount paid is required");
             error_date_borrowed.setText("Expiration date of ID is required");
             return;
 

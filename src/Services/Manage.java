@@ -50,10 +50,13 @@ public class Manage {
                 + "Amount paid: " + amount_paid + ", "
                 + "Debt borrowed: " + date_borrowed + ", "
                 + "time: " + date;
+        
+        
+
 
         try {
             PreparedStatement updateDebts
-                    = conn.prepareStatement("Update debts set amount =? , amount_paid=? and created_at =?  where id=?");
+                    = conn.prepareStatement("Update debts set amount =? , amount_paid=? , created_at =?  where id=?");
 
             updateDebts.setString(1, amount);
             updateDebts.setString(2, amount_paid);

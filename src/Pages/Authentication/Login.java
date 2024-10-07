@@ -10,6 +10,7 @@ public class Login extends javax.swing.JFrame {
         ServiceMethod.Handle.resetErrorField(password_field, error_password_label);
         ServiceMethod.Handle.HoverLink(link_label);
 
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -51,17 +52,17 @@ public class Login extends javax.swing.JFrame {
         error_username_label.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         error_username_label.setForeground(new java.awt.Color(255, 0, 0));
         error_username_label.setPreferredSize(new java.awt.Dimension(400, 35));
-        jPanel4.add(error_username_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 330, 30));
+        jPanel4.add(error_username_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 290, 30));
 
         password_label2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         password_label2.setText("Username");
         password_label2.setPreferredSize(new java.awt.Dimension(400, 35));
-        jPanel4.add(password_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        jPanel4.add(password_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 30));
 
         jPanel2.add(jPanel4);
 
         username_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        username_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        username_field.setPreferredSize(new java.awt.Dimension(350, 35));
         username_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username_fieldActionPerformed(evt);
@@ -75,17 +76,17 @@ public class Login extends javax.swing.JFrame {
         password_label1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         password_label1.setText("Password");
         password_label1.setPreferredSize(new java.awt.Dimension(400, 35));
-        jPanel5.add(password_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        jPanel5.add(password_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 30));
 
         error_password_label.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         error_password_label.setForeground(new java.awt.Color(255, 0, 0));
         error_password_label.setPreferredSize(new java.awt.Dimension(400, 35));
-        jPanel5.add(error_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 330, 30));
+        jPanel5.add(error_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 300, 30));
 
         jPanel2.add(jPanel5);
 
         password_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        password_field.setPreferredSize(new java.awt.Dimension(400, 35));
+        password_field.setPreferredSize(new java.awt.Dimension(350, 35));
         password_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 password_fieldActionPerformed(evt);
@@ -98,7 +99,7 @@ public class Login extends javax.swing.JFrame {
         login_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         login_button.setText("Login");
         login_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        login_button.setPreferredSize(new java.awt.Dimension(400, 40));
+        login_button.setPreferredSize(new java.awt.Dimension(350, 40));
         login_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 login_buttonActionPerformed(evt);

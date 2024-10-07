@@ -19,8 +19,9 @@ public class Debts {
         try {
             PreparedStatement pst = conn.prepareStatement("Select "
                     + " debts.id as 'ID',"
+                    + " debts.user_id as 'User ID',"
                     + " users.name as 'Name',"
-                    + "debts.amount as 'Amount Borrowed',"
+                    + "debts.amount as 'Borrowed',"
                     + "debts.amount_paid as 'Amount Paid',"
                     + "debts.created_at as 'Date Borrowed',"
                     + "debts.status as 'Status'"

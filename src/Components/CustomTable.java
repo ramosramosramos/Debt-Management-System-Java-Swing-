@@ -32,6 +32,9 @@ public class CustomTable {
         });
         
         table.setDefaultEditor(Object.class, null);
+       
+   
+    
     }
     
    

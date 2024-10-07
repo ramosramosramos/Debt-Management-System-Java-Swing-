@@ -1,8 +1,9 @@
-
 package Tools;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -14,7 +15,7 @@ public class IP {
         try {
             String os = System.getProperty("os.name").toLowerCase();
             String command = "";
-
+            String gateway = "";
             // Determine command based on the OS
             if (os.contains("win")) {
                 command = "ipconfig";
@@ -38,15 +39,25 @@ public class IP {
                 if (line.contains(gatewayPattern)) {
                     if (os.contains("win")) {
                         // For Windows, extract the IP address from the line
-                        String gateway = line.split(":")[1].trim();
-                        return gateway.trim();
-                    }
+                        gateway = line.split(":")[1].trim();
 
+                    } else {
+                        // For Linux/Mac, extract the default gateway from routing table
+                        Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+\\.\\d+");
+                        Matcher matcher = pattern.matcher(line);
+                        if (matcher.find()) {
+                            gateway = matcher.group();
+
+                        }
+                    }
                 }
             }
+            return gateway;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+
     }
+
 }
