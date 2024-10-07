@@ -37,8 +37,12 @@ public class Debts {
         }
     }
     public static void PaidDebts(JTable table){
-
+        
         try {
+            PreparedStatement statusInsert = conn.prepareStatement("Update debts set status =? where amount_paid>=amount");
+            statusInsert.setString(1, "Fully paid");
+            statusInsert.execute();
+            
             PreparedStatement pst = conn.prepareStatement("Select "
                     + " debts.id as 'ID',"
                     + " users.name as 'Name',"
@@ -47,8 +51,8 @@ public class Debts {
                     + "debts.created_at as 'Date Borrowed',"
                     + "debts.status as 'Status'"
                     + " from debts join users on debts.user_id=users.id"
-                    + "  where debts.status !=?");
-            pst.setString(1, "Uncomplete");
+                    + "  where debts.amount_paid>=amount");
+     
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
            

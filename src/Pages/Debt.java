@@ -72,7 +72,9 @@ public final class Debt extends javax.swing.JFrame {
         jPanel27 = new javax.swing.JPanel();
         female_count_label = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
+        unpaid_count_label = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
+        paid_count_label = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
         jPanel34 = new javax.swing.JPanel();
@@ -411,15 +413,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel25.setBackground(new java.awt.Color(51, 51, 51));
         jPanel25.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        unpaid_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        unpaid_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        unpaid_count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(unpaid_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(unpaid_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel25);
@@ -427,15 +439,25 @@ public final class Debt extends javax.swing.JFrame {
         jPanel30.setBackground(new java.awt.Color(51, 51, 51));
         jPanel30.setPreferredSize(new java.awt.Dimension(250, 100));
 
+        paid_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        paid_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paid_count_label.setText("No. of users:");
+
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
         jPanel30Layout.setHorizontalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(paid_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel30Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(paid_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         inner_dashboard.add(jPanel30);
@@ -1044,6 +1066,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel name_label;
     private javax.swing.JButton paid_button;
+    private javax.swing.JLabel paid_count_label;
     private javax.swing.JLabel phone_label;
     private javax.swing.JButton settings_button;
     private javax.swing.JLabel status_label;
@@ -1055,6 +1078,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton transactions_button;
     private javax.swing.JButton unpaid_button;
+    private javax.swing.JLabel unpaid_count_label;
     private javax.swing.JPopupMenu unpaid_pop_menu;
     private javax.swing.JLabel unverified_count_label;
     private javax.swing.JMenuItem update_unpaid_menuItem;
@@ -1124,6 +1148,8 @@ public final class Debt extends javax.swing.JFrame {
         unverified_count_label.setText("No. of unverified: " + dashboard.getCountUnverified());
         male__count_label.setText("No. of Male: " + dashboard.getCountMale());
         female_count_label.setText("No. of Female: " + dashboard.getCountFemale());
+        unpaid_count_label.setText("No. of unpaid: "+dashboard.getUnpaidUser());
+        paid_count_label.setText("No of paid: "+dashboard.getPaidUser());
 
     }
 
