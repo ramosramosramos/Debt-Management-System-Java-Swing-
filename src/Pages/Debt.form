@@ -26,7 +26,7 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="delete_all_unpaid_debts">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+            <Property name="text" type="java.lang.String" value="Move all to archives"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delete_all_unpaid_debtsActionPerformed"/>
@@ -55,6 +55,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="forceDestroy_archive_menuItemActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="restore_all_archive_debts">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Restore all archives"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="restore_all_archive_debtsActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>

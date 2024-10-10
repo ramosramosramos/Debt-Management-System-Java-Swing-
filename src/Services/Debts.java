@@ -185,6 +185,31 @@ public class Debts {
 
         }
     }
+    
+    
+      public static void restoreAllArchiveDebts(String username, Pages.Debt frame) {
+        try {
+            String askPassword = JOptionPane.showInputDialog("Enter your password");
+            String hashPassword = Tools.Password.hashPassword(askPassword);
+            Pages.Account account = new Pages.Account(username);
+               String MESSAGE = "All debt's customer in archives has been restored.";
+            if (hashPassword.equals(account.getPassword())) {
+
+                PreparedStatement pst = conn.prepareStatement("Update debts set deleted_at=? where deleted_at !=?");
+                pst.setString(1, "null");
+                pst.setString(2, "null");
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "All debt's customer in archives has been restored.");
+                   Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+            } else {
+                InvalidPassword();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            frame.offGlass();
+        }
+
+    }
 
     public static void InvalidPassword() {
         JOptionPane.showMessageDialog(null, "Unauthorized: Invalid Password.");

@@ -45,6 +45,7 @@ public final class Debt extends javax.swing.JFrame {
         arhives_popMenu = new javax.swing.JPopupMenu();
         restore_archive_menuItem = new javax.swing.JMenuItem();
         forceDestroy_archive_menuItem = new javax.swing.JMenuItem();
+        restore_all_archive_debts = new javax.swing.JMenuItem();
         background = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         menu_button = new Components.CustomButton(this);
@@ -152,7 +153,7 @@ public final class Debt extends javax.swing.JFrame {
         });
         unpaid_pop_menu.add(delete_debts_menuItem);
 
-        delete_all_unpaid_debts.setText("jMenuItem1");
+        delete_all_unpaid_debts.setText("Move all to archives");
         delete_all_unpaid_debts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delete_all_unpaid_debtsActionPerformed(evt);
@@ -176,6 +177,14 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         arhives_popMenu.add(forceDestroy_archive_menuItem);
+
+        restore_all_archive_debts.setText("Restore all archives");
+        restore_all_archive_debts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restore_all_archive_debtsActionPerformed(evt);
+            }
+        });
+        arhives_popMenu.add(restore_all_archive_debts);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -1085,6 +1094,13 @@ public final class Debt extends javax.swing.JFrame {
         offGlass();
     }//GEN-LAST:event_delete_all_unpaid_debtsActionPerformed
 
+    private void restore_all_archive_debtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restore_all_archive_debtsActionPerformed
+        onGlass();
+        Services.Debts.restoreAllArchiveDebts(globalUsername, this);
+        updateDebts();
+        offGlass();
+    }//GEN-LAST:event_restore_all_archive_debtsActionPerformed
+
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
@@ -1171,6 +1187,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JButton paid_button;
     private javax.swing.JLabel paid_count_label;
     private javax.swing.JLabel phone_label;
+    private javax.swing.JMenuItem restore_all_archive_debts;
     private javax.swing.JMenuItem restore_archive_menuItem;
     private javax.swing.JButton settings_button;
     private javax.swing.JLabel status_label;
