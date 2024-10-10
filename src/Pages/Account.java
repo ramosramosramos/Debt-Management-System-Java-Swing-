@@ -19,6 +19,8 @@ public class Account {
 
     String phone_verified_at;
 
+    String password;
+
     public Account(String username) {
         try {
 
@@ -34,7 +36,8 @@ public class Account {
                 age = rs.getString("age");
                 created_at = rs.getString("created_at");
                 phone_verified_at = rs.getString("phone_verified_at");
-                globalUsername= rs.getString("username");
+                globalUsername = rs.getString("username");
+                password = rs.getString("password");
                 if (phone_verified_at == null) {
                     phone_verified_at = "Unverified";
                 }
@@ -76,6 +79,10 @@ public class Account {
 
     public String getGlobalUsername() {
         return globalUsername;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 }

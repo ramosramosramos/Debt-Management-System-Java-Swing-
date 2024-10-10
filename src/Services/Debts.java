@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
@@ -89,39 +90,103 @@ public class Debts {
         }
     }
 
-    public static void destroyDebts(String id) {
+    public static void destroyDebts(String id, String username, Pages.Debt frame) {
         try {
-            PreparedStatement pst = conn.prepareStatement("Update debts set deleted_at=? where id=?");
-            pst.setString(1, Tools.Date.getDate());
-            pst.setString(2, id);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Successfully move to trash");
-        } catch (SQLException | HeadlessException e) {
+
+            String askPassword = JOptionPane.showInputDialog("Enter your password");
+            String hashPassword = Tools.Password.hashPassword(askPassword);
+            Pages.Account account = new Pages.Account(username);
+
+            if (hashPassword.equals(account.getPassword())) {
+                PreparedStatement pst = conn.prepareStatement("Update debts set deleted_at=? where id=?");
+                pst.setString(1, Tools.Date.getDate());
+                pst.setString(2, id);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Successfully move to archives");
+
+            } else {
+                InvalidPassword();
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
+            frame.offGlass();
         }
     }
 
-    public static void restoreDebts(String id) {
+    public static void restoreDebts(String id, String username, Pages.Debt frame) {
         try {
-            PreparedStatement pst = conn.prepareStatement("Update debts set deleted_at=? where id=?");
-            pst.setString(1, "null");
-            pst.setString(2, id);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Successfully restored");
-        } catch (SQLException | HeadlessException e) {
+            String askPassword = JOptionPane.showInputDialog("Enter your password");
+            String hashPassword = Tools.Password.hashPassword(askPassword);
+            Pages.Account account = new Pages.Account(username);
+            if (hashPassword.equals(account.getPassword())) {
+
+                PreparedStatement pst = conn.prepareStatement("Update debts set deleted_at=? where id=?");
+                pst.setString(1, "null");
+                pst.setString(2, id);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Successfully restored");
+
+            } else {
+                InvalidPassword();
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
+            frame.offGlass();
+        }
+
+    }
+
+    public static void forceDelete(String id, String username, Pages.Debt frame) {
+        try {
+            String askPassword = JOptionPane.showInputDialog("Enter your password");
+            String hashPassword = Tools.Password.hashPassword(askPassword);
+            Pages.Account account = new Pages.Account(username);
+
+            String MESSAGE = "New debt's customer has been force delete. ID: " + id;
+            if (hashPassword.equals(account.getPassword())) {
+
+                PreparedStatement pst = conn.prepareStatement("Delete from  debts where id=?");
+                pst.setString(1, id);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Permanently deleted");
+                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+
+            } else {
+                InvalidPassword();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            frame.offGlass();
+        }
+
+    }
+
+    public static void deleteAllUnpaid(String username, Pages.Debt frame) {
+        try {
+            String askPassword = JOptionPane.showInputDialog("Enter your password");
+            String hashPassword = Tools.Password.hashPassword(askPassword);
+            Pages.Account account = new Pages.Account(username);
+            String date = Tools.Date.getDate();
+            String MESSAGE = "All debt's customer has move to archives.";
+            if (hashPassword.equals(account.getPassword())) {
+                PreparedStatement pst = conn.prepareStatement("Update debts set deleted_at=? where status=?");
+                pst.setString(1, date);
+                pst.setString(2, "Uncomplete");
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Successfully move all to archives");
+                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+            } else {
+                InvalidPassword();
+            }
+
+        } catch (NullPointerException | SQLException | HeadlessException e) {
+            System.out.println(e.getMessage());
+            frame.offGlass();
+
         }
     }
 
-    public static void forceDelete(String id) {
-        try {
-            PreparedStatement pst = conn.prepareStatement("Delete from  debts where id=?");
-
-            pst.setString(1, id);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Permanently deleted");
-        } catch (SQLException | HeadlessException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void InvalidPassword() {
+        JOptionPane.showMessageDialog(null, "Unauthorized: Invalid Password.");
     }
 }

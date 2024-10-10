@@ -41,6 +41,7 @@ public final class Debt extends javax.swing.JFrame {
         unpaid_pop_menu = new javax.swing.JPopupMenu();
         update_unpaid_menuItem = new javax.swing.JMenuItem();
         delete_debts_menuItem = new javax.swing.JMenuItem();
+        delete_all_unpaid_debts = new javax.swing.JMenuItem();
         arhives_popMenu = new javax.swing.JPopupMenu();
         restore_archive_menuItem = new javax.swing.JMenuItem();
         forceDestroy_archive_menuItem = new javax.swing.JMenuItem();
@@ -150,6 +151,14 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         unpaid_pop_menu.add(delete_debts_menuItem);
+
+        delete_all_unpaid_debts.setText("jMenuItem1");
+        delete_all_unpaid_debts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_all_unpaid_debtsActionPerformed(evt);
+            }
+        });
+        unpaid_pop_menu.add(delete_all_unpaid_debts);
 
         restore_archive_menuItem.setText("Restore");
         restore_archive_menuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1042,7 +1051,7 @@ public final class Debt extends javax.swing.JFrame {
     private void delete_debts_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_debts_menuItemActionPerformed
         String id = table_unpaid_debts.getValueAt(table_unpaid_debts.getSelectedRow(), 0).toString();
         onGlass();
-        Services.Debts.destroyDebts(id);
+        Services.Debts.destroyDebts(id, globalUsername, this);
         updateDebts();
         offGlass();
     }//GEN-LAST:event_delete_debts_menuItemActionPerformed
@@ -1054,21 +1063,27 @@ public final class Debt extends javax.swing.JFrame {
     private void restore_archive_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restore_archive_menuItemActionPerformed
         String id = table_archives_debts.getValueAt(table_archives_debts.getSelectedRow(), 0).toString();
         onGlass();
-        Services.Debts.restoreDebts(id);
+        Services.Debts.restoreDebts(id, globalUsername, this);
         updateDebts();
         offGlass();
-      
+
     }//GEN-LAST:event_restore_archive_menuItemActionPerformed
 
     private void forceDestroy_archive_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forceDestroy_archive_menuItemActionPerformed
         String id = table_archives_debts.getValueAt(table_archives_debts.getSelectedRow(), 0).toString();
         onGlass();
-        Services.Debts.forceDelete(id);
-        String MESSAGE = "New debt's customer has been force delete. ID: "+id;
-        Notifications.Alert.Admin(IP_ADDRESS, details.getPhone(), MESSAGE, true);
+        Services.Debts.forceDelete(id, globalUsername, this);
+
         updateDebts();
         offGlass();
     }//GEN-LAST:event_forceDestroy_archive_menuItemActionPerformed
+
+    private void delete_all_unpaid_debtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_all_unpaid_debtsActionPerformed
+        onGlass();
+        Services.Debts.deleteAllUnpaid(globalUsername, this);
+        updateDebts();
+        offGlass();
+    }//GEN-LAST:event_delete_all_unpaid_debtsActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -1092,6 +1107,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JLabel created_at_label;
     private javax.swing.JButton dashboard_button;
     private javax.swing.JScrollPane dashboard_scrollPane;
+    private javax.swing.JMenuItem delete_all_unpaid_debts;
     private javax.swing.JMenuItem delete_debts_menuItem;
     private javax.swing.JButton export_import_button;
     private javax.swing.JLabel female_count_label;
@@ -1246,15 +1262,15 @@ public final class Debt extends javax.swing.JFrame {
 
     }
 
-    void onGlass() {
+    public void onGlass() {
         Components.CustomeGlassPane.onGlassPane(rootPane);
     }
 
-    void offGlass() {
+    public void offGlass() {
         Components.CustomeGlassPane.offGlassPane(rootPane);
     }
 
-    void handleTablePropMenu(java.awt.event.MouseEvent evt, JPopupMenu popMenu, JTable table) {
+    public void handleTablePropMenu(java.awt.event.MouseEvent evt, JPopupMenu popMenu, JTable table) {
         if (SwingUtilities.isRightMouseButton(evt)) {
             popMenu.show(table, evt.getX(), evt.getY());
         }
