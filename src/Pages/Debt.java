@@ -15,6 +15,7 @@ public final class Debt extends javax.swing.JFrame {
     Connection conn = null;
     String globalUsername;
     String IP_ADDRESS = null;
+    Pages.Account details;
 
     public Debt(String username) {
         initComponents();
@@ -30,8 +31,6 @@ public final class Debt extends javax.swing.JFrame {
             globalUsername = "kent1";
         }
         setAccountDetails(username);
-        
-
 
     }
 
@@ -41,6 +40,10 @@ public final class Debt extends javax.swing.JFrame {
 
         unpaid_pop_menu = new javax.swing.JPopupMenu();
         update_unpaid_menuItem = new javax.swing.JMenuItem();
+        delete_debts_menuItem = new javax.swing.JMenuItem();
+        arhives_popMenu = new javax.swing.JPopupMenu();
+        restore_archive_menuItem = new javax.swing.JMenuItem();
+        forceDestroy_archive_menuItem = new javax.swing.JMenuItem();
         background = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         menu_button = new Components.CustomButton(this);
@@ -115,10 +118,8 @@ public final class Debt extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        table_archives_debts = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
@@ -141,6 +142,31 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         unpaid_pop_menu.add(update_unpaid_menuItem);
+
+        delete_debts_menuItem.setText("Move to archives");
+        delete_debts_menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_debts_menuItemActionPerformed(evt);
+            }
+        });
+        unpaid_pop_menu.add(delete_debts_menuItem);
+
+        restore_archive_menuItem.setText("Restore");
+        restore_archive_menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restore_archive_menuItemActionPerformed(evt);
+            }
+        });
+        arhives_popMenu.add(restore_archive_menuItem);
+
+        forceDestroy_archive_menuItem.setText("Delete Permanently");
+        forceDestroy_archive_menuItem.setToolTipText("");
+        forceDestroy_archive_menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forceDestroy_archive_menuItemActionPerformed(evt);
+            }
+        });
+        arhives_popMenu.add(forceDestroy_archive_menuItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -251,7 +277,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(users_button);
 
         export_import_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        export_import_button.setText("Export/Import");
+        export_import_button.setText("Archives");
         export_import_button.setBorderPainted(false);
         export_import_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         export_import_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -817,21 +843,54 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel8.setLayout(new java.awt.BorderLayout());
 
+        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Export / Import");
+        jLabel7.setText("Archives");
         jPanel16.add(jLabel7);
 
         jPanel8.add(jPanel16, java.awt.BorderLayout.PAGE_START);
 
-        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel18.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 290, 40));
-        jPanel18.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 290, 40));
-        jPanel18.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 290, 40));
-        jPanel18.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 290, 40));
+        jPanel18.setLayout(new java.awt.BorderLayout());
+
+        table_archives_debts.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_archives_debts.getTableHeader().setReorderingAllowed(false);
+        table_archives_debts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_archives_debtsMousePressed(evt);
+            }
+        });
+        jScrollPane6.setViewportView(table_archives_debts);
+        if (table_archives_debts.getColumnModel().getColumnCount() > 0) {
+            table_archives_debts.getColumnModel().getColumn(0).setResizable(false);
+            table_archives_debts.getColumnModel().getColumn(1).setResizable(false);
+            table_archives_debts.getColumnModel().getColumn(2).setResizable(false);
+            table_archives_debts.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jPanel18.add(jScrollPane6, java.awt.BorderLayout.CENTER);
 
         jPanel8.add(jPanel18, java.awt.BorderLayout.CENTER);
 
-        tabbedPane.addTab("Export/Import", jPanel8);
+        tabbedPane.addTab("Archives", jPanel8);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Settings");
@@ -980,6 +1039,37 @@ public final class Debt extends javax.swing.JFrame {
         updateDebts();
     }//GEN-LAST:event_update_unpaid_menuItemActionPerformed
 
+    private void delete_debts_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_debts_menuItemActionPerformed
+        String id = table_unpaid_debts.getValueAt(table_unpaid_debts.getSelectedRow(), 0).toString();
+        onGlass();
+        Services.Debts.destroyDebts(id);
+        updateDebts();
+        offGlass();
+    }//GEN-LAST:event_delete_debts_menuItemActionPerformed
+
+    private void table_archives_debtsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_archives_debtsMousePressed
+        handleTablePropMenu(evt, arhives_popMenu, table_archives_debts);
+    }//GEN-LAST:event_table_archives_debtsMousePressed
+
+    private void restore_archive_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restore_archive_menuItemActionPerformed
+        String id = table_archives_debts.getValueAt(table_archives_debts.getSelectedRow(), 0).toString();
+        onGlass();
+        Services.Debts.restoreDebts(id);
+        updateDebts();
+        offGlass();
+      
+    }//GEN-LAST:event_restore_archive_menuItemActionPerformed
+
+    private void forceDestroy_archive_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forceDestroy_archive_menuItemActionPerformed
+        String id = table_archives_debts.getValueAt(table_archives_debts.getSelectedRow(), 0).toString();
+        onGlass();
+        Services.Debts.forceDelete(id);
+        String MESSAGE = "New debt's customer has been force delete. ID: "+id;
+        Notifications.Alert.Admin(IP_ADDRESS, details.getPhone(), MESSAGE, true);
+        updateDebts();
+        offGlass();
+    }//GEN-LAST:event_forceDestroy_archive_menuItemActionPerformed
+
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
@@ -995,14 +1085,17 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JButton add_customer_button;
     private javax.swing.JLabel address_label;
     private javax.swing.JLabel age_label;
+    private javax.swing.JPopupMenu arhives_popMenu;
     private javax.swing.JPanel background;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel city_label;
     private javax.swing.JLabel created_at_label;
     private javax.swing.JButton dashboard_button;
     private javax.swing.JScrollPane dashboard_scrollPane;
+    private javax.swing.JMenuItem delete_debts_menuItem;
     private javax.swing.JButton export_import_button;
     private javax.swing.JLabel female_count_label;
+    private javax.swing.JMenuItem forceDestroy_archive_menuItem;
     private javax.swing.JPanel inner_dashboard;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -1053,10 +1146,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton logout_button;
     private javax.swing.JLabel male__count_label;
     private javax.swing.JPanel menuPanel;
@@ -1065,9 +1155,11 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JButton paid_button;
     private javax.swing.JLabel paid_count_label;
     private javax.swing.JLabel phone_label;
+    private javax.swing.JMenuItem restore_archive_menuItem;
     private javax.swing.JButton settings_button;
     private javax.swing.JLabel status_label;
     private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JTable table_archives_debts;
     private javax.swing.JTable table_paid_debts;
     private javax.swing.JTable table_transactions;
     private javax.swing.JTable table_unpaid_debts;
@@ -1086,7 +1178,7 @@ public final class Debt extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     void setAccountDetails(String username) {
-        Pages.Account details = new Pages.Account(username);
+        details = new Pages.Account(username);
         name_label.setText("Name: " + details.getName());
         username_label.setText("Username: " + username);
         city_label.setText("City: " + details.getCity());
@@ -1134,21 +1226,23 @@ public final class Debt extends javax.swing.JFrame {
     public void updateDebts() {
         Services.Debts.UnpaidDebts(table_unpaid_debts);
         Services.Debts.PaidDebts(table_paid_debts);
+        Services.Debts.ArchiveDebts(table_archives_debts);
         Services.Users.Users(table_users);
         Services.Transactions.History(table_transactions);
         Components.CustomTable.Design(table_paid_debts);
         Components.CustomTable.Design(table_unpaid_debts);
         Components.CustomTable.Design(table_users);
         Components.CustomTable.Design(table_transactions);
+        Components.CustomTable.Design(table_archives_debts);
 
         Services.DashBoard dashboard = new Services.DashBoard();
         user_count_label.setText("No. of users: " + dashboard.getCountUser());
         unverified_count_label.setText("No. of unverified: " + dashboard.getCountUnverified());
         male__count_label.setText("No. of Male: " + dashboard.getCountMale());
         female_count_label.setText("No. of Female: " + dashboard.getCountFemale());
-        unpaid_count_label.setText("No. of unpaid: "+dashboard.getUnpaidUser());
-        paid_count_label.setText("No of paid: "+dashboard.getPaidUser());
-        transaction_count_label.setText("No. of transactions: "+dashboard.getTranctionCount());
+        unpaid_count_label.setText("No. of unpaid: " + dashboard.getUnpaidUser());
+        paid_count_label.setText("No of paid: " + dashboard.getPaidUser());
+        transaction_count_label.setText("No. of transactions: " + dashboard.getTranctionCount());
 
     }
 
@@ -1173,7 +1267,7 @@ public final class Debt extends javax.swing.JFrame {
         String date_borrowed = table.getValueAt(table.getSelectedRow(), 5).toString();
         String user_id = table.getValueAt(table.getSelectedRow(), 1).toString();
 
-        Object[] user = {id, amount, amount_paid, date_borrowed,user_id};
+        Object[] user = {id, amount, amount_paid, date_borrowed, user_id};
 
         return user;
     }

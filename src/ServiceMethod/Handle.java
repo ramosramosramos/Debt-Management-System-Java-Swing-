@@ -72,7 +72,7 @@ public class Handle {
                     } else if (buttonText.contains("users")) {
                         tabbedPane.setSelectedIndex(5);
                         buttons[5].setBackground(new Color(51, 51, 51));
-                    } else if (buttonText.contains("export")) {
+                    } else if (buttonText.contains("archives")) {
                         tabbedPane.setSelectedIndex(6);
                         buttons[6].setBackground(new Color(51, 51, 51));
                     } else if (buttonText.contains("settings")) {
