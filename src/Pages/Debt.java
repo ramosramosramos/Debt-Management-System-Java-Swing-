@@ -16,6 +16,7 @@ public final class Debt extends javax.swing.JFrame {
     String globalUsername;
     String IP_ADDRESS = null;
     Pages.Account details;
+    boolean isChangeArhivesToTransactions = false;
 
     public Debt(String username) {
         initComponents();
@@ -46,6 +47,10 @@ public final class Debt extends javax.swing.JFrame {
         restore_archive_menuItem = new javax.swing.JMenuItem();
         forceDestroy_archive_menuItem = new javax.swing.JMenuItem();
         restore_all_archive_debts = new javax.swing.JMenuItem();
+        transactions_pop_menu = new javax.swing.JPopupMenu();
+        update_transactions_menuItem1 = new javax.swing.JMenuItem();
+        delete_transactions_menuItem = new javax.swing.JMenuItem();
+        delete_all_transactions_debts = new javax.swing.JMenuItem();
         background = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         menu_button = new Components.CustomButton(this);
@@ -60,7 +65,7 @@ public final class Debt extends javax.swing.JFrame {
         transactions_button = new Components.CustomButton(this);
         users_button = new Components.CustomButton(this);
         export_import_button = new Components.CustomButton(this);
-        settings_button = new Components.CustomButton(this);
+        developer_button = new Components.CustomButton(this);
         account_button = new Components.CustomButton(this);
         logout_button = new Components.CustomButton(this);
         tabbedPane = new javax.swing.JTabbedPane();
@@ -69,19 +74,19 @@ public final class Debt extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         dashboard_scrollPane = new javax.swing.JScrollPane();
         inner_dashboard = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
+        count_users_panel = new javax.swing.JPanel();
         user_count_label = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
+        count_unverified_panel = new javax.swing.JPanel();
         unverified_count_label = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
+        count_male_panel = new javax.swing.JPanel();
         male__count_label = new javax.swing.JLabel();
-        jPanel27 = new javax.swing.JPanel();
+        count_female_panel = new javax.swing.JPanel();
         female_count_label = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
+        count_unpaid_panel = new javax.swing.JPanel();
         unpaid_count_label = new javax.swing.JLabel();
-        jPanel30 = new javax.swing.JPanel();
+        count_paid_panel = new javax.swing.JPanel();
         paid_count_label = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
+        count_transaction_panel = new javax.swing.JPanel();
         transaction_count_label = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
         jPanel34 = new javax.swing.JPanel();
@@ -118,12 +123,29 @@ public final class Debt extends javax.swing.JFrame {
         table_users = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        title_archives = new javax.swing.JLabel();
+        open_debts_archives_button = new javax.swing.JButton();
+        open_transactions_archives_button = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         table_archives_debts = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        query_field = new javax.swing.JTextArea();
+        query_label = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        query_guides_button = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel38 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        table_query = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        jPanel39 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        query_output_field = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         account_name8 = new javax.swing.JLabel();
@@ -186,6 +208,30 @@ public final class Debt extends javax.swing.JFrame {
         });
         arhives_popMenu.add(restore_all_archive_debts);
 
+        update_transactions_menuItem1.setText("Edit");
+        update_transactions_menuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_transactions_menuItem1ActionPerformed(evt);
+            }
+        });
+        transactions_pop_menu.add(update_transactions_menuItem1);
+
+        delete_transactions_menuItem.setText("Move to archives");
+        delete_transactions_menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_transactions_menuItemActionPerformed(evt);
+            }
+        });
+        transactions_pop_menu.add(delete_transactions_menuItem);
+
+        delete_all_transactions_debts.setText("Move all to archives");
+        delete_all_transactions_debts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_all_transactions_debtsActionPerformed(evt);
+            }
+        });
+        transactions_pop_menu.add(delete_all_transactions_debts);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -226,6 +272,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(jPanel20);
 
         dashboard_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        dashboard_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dashboard.png"))); // NOI18N
         dashboard_button.setText("Dashboard");
         dashboard_button.setBorderPainted(false);
         dashboard_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -240,6 +287,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(dashboard_button);
 
         unpaid_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        unpaid_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/money.png"))); // NOI18N
         unpaid_button.setText("Unpaid customer");
         unpaid_button.setBorderPainted(false);
         unpaid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -254,6 +302,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(unpaid_button);
 
         paid_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        paid_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cash.png"))); // NOI18N
         paid_button.setText("Paid cutomer");
         paid_button.setBorderPainted(false);
         paid_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -268,6 +317,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(paid_button);
 
         add_customer_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        add_customer_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/process.png"))); // NOI18N
         add_customer_button.setText("Manage");
         add_customer_button.setBorderPainted(false);
         add_customer_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -277,6 +327,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(add_customer_button);
 
         transactions_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        transactions_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lending.png"))); // NOI18N
         transactions_button.setText("Transactions");
         transactions_button.setBorderPainted(false);
         transactions_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -286,7 +337,8 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(transactions_button);
 
         users_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        users_button.setText("Users  (customer's details)");
+        users_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user.png"))); // NOI18N
+        users_button.setText("Users  (customers)");
         users_button.setBorderPainted(false);
         users_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         users_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -295,6 +347,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(users_button);
 
         export_import_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        export_import_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/archive.png"))); // NOI18N
         export_import_button.setText("Archives");
         export_import_button.setBorderPainted(false);
         export_import_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -308,16 +361,18 @@ public final class Debt extends javax.swing.JFrame {
         });
         menuPanel.add(export_import_button);
 
-        settings_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        settings_button.setText("Settings");
-        settings_button.setBorderPainted(false);
-        settings_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        settings_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        settings_button.setOpaque(false);
-        settings_button.setPreferredSize(new java.awt.Dimension(190, 35));
-        menuPanel.add(settings_button);
+        developer_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        developer_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/setting.png"))); // NOI18N
+        developer_button.setText("Developer mode");
+        developer_button.setBorderPainted(false);
+        developer_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        developer_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        developer_button.setOpaque(false);
+        developer_button.setPreferredSize(new java.awt.Dimension(190, 35));
+        menuPanel.add(developer_button);
 
         account_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        account_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profile.png"))); // NOI18N
         account_button.setText("Account");
         account_button.setBorderPainted(false);
         account_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -326,6 +381,7 @@ public final class Debt extends javax.swing.JFrame {
         menuPanel.add(account_button);
 
         logout_button.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        logout_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
         logout_button.setText("Logout");
         logout_button.setBorderPainted(false);
         logout_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -343,6 +399,8 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Dashboard");
         jPanel3.add(jLabel2);
@@ -352,187 +410,187 @@ public final class Debt extends javax.swing.JFrame {
         inner_dashboard.setPreferredSize(new java.awt.Dimension(700, 1000));
         inner_dashboard.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jPanel21.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel21.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_users_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_users_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         user_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         user_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         user_count_label.setText("No. of users:");
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_users_panelLayout = new javax.swing.GroupLayout(count_users_panel);
+        count_users_panel.setLayout(count_users_panelLayout);
+        count_users_panelLayout.setHorizontalGroup(
+            count_users_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_users_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(user_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+        count_users_panelLayout.setVerticalGroup(
+            count_users_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_users_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(user_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel21);
+        inner_dashboard.add(count_users_panel);
 
-        jPanel22.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel22.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_unverified_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_unverified_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         unverified_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         unverified_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        unverified_count_label.setText("No. of users:");
+        unverified_count_label.setText("No. of unverified:");
 
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_unverified_panelLayout = new javax.swing.GroupLayout(count_unverified_panel);
+        count_unverified_panel.setLayout(count_unverified_panelLayout);
+        count_unverified_panelLayout.setHorizontalGroup(
+            count_unverified_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_unverified_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(unverified_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
+        count_unverified_panelLayout.setVerticalGroup(
+            count_unverified_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_unverified_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(unverified_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel22);
+        inner_dashboard.add(count_unverified_panel);
 
-        jPanel23.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel23.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_male_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_male_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         male__count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         male__count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         male__count_label.setText("No. of users:");
 
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_male_panelLayout = new javax.swing.GroupLayout(count_male_panel);
+        count_male_panel.setLayout(count_male_panelLayout);
+        count_male_panelLayout.setHorizontalGroup(
+            count_male_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_male_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(male__count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
+        count_male_panelLayout.setVerticalGroup(
+            count_male_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_male_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(male__count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel23);
+        inner_dashboard.add(count_male_panel);
 
-        jPanel27.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel27.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_female_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_female_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         female_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         female_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         female_count_label.setText("No. of users:");
 
-        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
-        jPanel27.setLayout(jPanel27Layout);
-        jPanel27Layout.setHorizontalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_female_panelLayout = new javax.swing.GroupLayout(count_female_panel);
+        count_female_panel.setLayout(count_female_panelLayout);
+        count_female_panelLayout.setHorizontalGroup(
+            count_female_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_female_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(female_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel27Layout.setVerticalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
+        count_female_panelLayout.setVerticalGroup(
+            count_female_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_female_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(female_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel27);
+        inner_dashboard.add(count_female_panel);
 
-        jPanel25.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel25.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_unpaid_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_unpaid_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         unpaid_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         unpaid_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         unpaid_count_label.setText("No. of users:");
 
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_unpaid_panelLayout = new javax.swing.GroupLayout(count_unpaid_panel);
+        count_unpaid_panel.setLayout(count_unpaid_panelLayout);
+        count_unpaid_panelLayout.setHorizontalGroup(
+            count_unpaid_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_unpaid_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(unpaid_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        count_unpaid_panelLayout.setVerticalGroup(
+            count_unpaid_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_unpaid_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(unpaid_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel25);
+        inner_dashboard.add(count_unpaid_panel);
 
-        jPanel30.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel30.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_paid_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_paid_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         paid_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         paid_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         paid_count_label.setText("No. of users:");
 
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_paid_panelLayout = new javax.swing.GroupLayout(count_paid_panel);
+        count_paid_panel.setLayout(count_paid_panelLayout);
+        count_paid_panelLayout.setHorizontalGroup(
+            count_paid_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_paid_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(paid_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
+        count_paid_panelLayout.setVerticalGroup(
+            count_paid_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_paid_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(paid_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel30);
+        inner_dashboard.add(count_paid_panel);
 
-        jPanel29.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel29.setPreferredSize(new java.awt.Dimension(250, 100));
+        count_transaction_panel.setBackground(new java.awt.Color(51, 51, 51));
+        count_transaction_panel.setPreferredSize(new java.awt.Dimension(250, 100));
 
         transaction_count_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         transaction_count_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         transaction_count_label.setText("No. of users:");
 
-        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
-        jPanel29.setLayout(jPanel29Layout);
-        jPanel29Layout.setHorizontalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+        javax.swing.GroupLayout count_transaction_panelLayout = new javax.swing.GroupLayout(count_transaction_panel);
+        count_transaction_panel.setLayout(count_transaction_panelLayout);
+        count_transaction_panelLayout.setHorizontalGroup(
+            count_transaction_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, count_transaction_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(transaction_count_label, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel29Layout.setVerticalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
+        count_transaction_panelLayout.setVerticalGroup(
+            count_transaction_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(count_transaction_panelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(transaction_count_label, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        inner_dashboard.add(jPanel29);
+        inner_dashboard.add(count_transaction_panel);
 
         jPanel32.setBackground(new java.awt.Color(51, 51, 51));
         jPanel32.setPreferredSize(new java.awt.Dimension(250, 100));
@@ -670,6 +728,8 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Unpaid Customer");
         jPanel10.add(jLabel1);
@@ -714,6 +774,8 @@ public final class Debt extends javax.swing.JFrame {
         tabbedPane.addTab("Unpaid Customer", jPanel2);
 
         jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Paid Customer");
@@ -765,6 +827,7 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(0, 153, 0));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton1.setText("Add Customer");
         jButton1.setBorderPainted(false);
@@ -780,6 +843,8 @@ public final class Debt extends javax.swing.JFrame {
         tabbedPane.addTab("Manage", jPanel5);
 
         jPanel6.setLayout(new java.awt.BorderLayout());
+
+        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Transactions");
@@ -807,6 +872,11 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         table_transactions.getTableHeader().setReorderingAllowed(false);
+        table_transactions.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_transactionsMousePressed(evt);
+            }
+        });
         jScrollPane4.setViewportView(table_transactions);
         if (table_transactions.getColumnModel().getColumnCount() > 0) {
             table_transactions.getColumnModel().getColumn(0).setResizable(false);
@@ -820,6 +890,8 @@ public final class Debt extends javax.swing.JFrame {
         tabbedPane.addTab("Transactions", jPanel6);
 
         jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Users");
@@ -861,11 +933,29 @@ public final class Debt extends javax.swing.JFrame {
 
         jPanel8.setLayout(new java.awt.BorderLayout());
 
-        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 10));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Archives");
-        jPanel16.add(jLabel7);
+        title_archives.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        title_archives.setText("Debt's archives");
+        jPanel16.add(title_archives);
+
+        open_debts_archives_button.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        open_debts_archives_button.setText("Debts is on");
+        open_debts_archives_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                open_debts_archives_buttonActionPerformed(evt);
+            }
+        });
+        jPanel16.add(open_debts_archives_button);
+
+        open_transactions_archives_button.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        open_transactions_archives_button.setText("Transactions is off");
+        open_transactions_archives_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                open_transactions_archives_buttonActionPerformed(evt);
+            }
+        });
+        jPanel16.add(open_transactions_archives_button);
 
         jPanel8.add(jPanel16, java.awt.BorderLayout.PAGE_START);
 
@@ -910,31 +1000,102 @@ public final class Debt extends javax.swing.JFrame {
 
         tabbedPane.addTab("Archives", jPanel8);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("Settings");
+        jPanel9.setLayout(new java.awt.GridLayout(3, 0));
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jPanel31.setLayout(new java.awt.BorderLayout());
+
+        query_field.setColumns(20);
+        query_field.setRows(5);
+        jScrollPane8.setViewportView(query_field);
+
+        jPanel31.add(jScrollPane8, java.awt.BorderLayout.CENTER);
+
+        query_label.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        query_label.setText("Query field");
+        jPanel31.add(query_label, java.awt.BorderLayout.PAGE_START);
+
+        jPanel19.setPreferredSize(new java.awt.Dimension(150, 162));
+
+        query_guides_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        query_guides_button.setText("Guides");
+
+        jButton2.setBackground(new java.awt.Color(0, 153, 0));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setText("Execute");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(query_guides_button))
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addComponent(query_guides_button, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        tabbedPane.addTab("Settings", jPanel9);
+        jPanel31.add(jPanel19, java.awt.BorderLayout.LINE_END);
+
+        jPanel9.add(jPanel31);
+
+        jPanel38.setLayout(new java.awt.BorderLayout());
+
+        table_query.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "", "", "", ""
+            }
+        ));
+        table_query.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(table_query);
+
+        jPanel38.add(jScrollPane7, java.awt.BorderLayout.CENTER);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setText("Query results");
+        jPanel38.add(jLabel8, java.awt.BorderLayout.PAGE_START);
+
+        jPanel9.add(jPanel38);
+
+        jPanel39.setLayout(new java.awt.BorderLayout());
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setText("Output:");
+        jPanel39.add(jLabel10, java.awt.BorderLayout.PAGE_START);
+
+        query_output_field.setColumns(20);
+        query_output_field.setRows(5);
+        jScrollPane1.setViewportView(query_output_field);
+
+        jPanel39.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel7.setText("Note: This can handle sensitive data, please back up the data first or contact administrator  for more informations.");
+        jPanel39.add(jLabel7, java.awt.BorderLayout.PAGE_END);
+
+        jPanel9.add(jPanel39);
+
+        tabbedPane.addTab("Developer", jPanel9);
 
         jPanel17.setLayout(new java.awt.BorderLayout());
 
@@ -998,7 +1159,7 @@ public final class Debt extends javax.swing.JFrame {
 
         getContentPane().add(background, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(1016, 639));
+        setSize(new java.awt.Dimension(1023, 646));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1058,9 +1219,9 @@ public final class Debt extends javax.swing.JFrame {
     }//GEN-LAST:event_update_unpaid_menuItemActionPerformed
 
     private void delete_debts_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_debts_menuItemActionPerformed
-        String id = table_unpaid_debts.getValueAt(table_unpaid_debts.getSelectedRow(), 0).toString();
+
         onGlass();
-        Services.Debts.destroyDebts(id, globalUsername, this);
+        Services.Debts.destroyDebts(getTableID(table_unpaid_debts), globalUsername, this);
         updateDebts();
         offGlass();
     }//GEN-LAST:event_delete_debts_menuItemActionPerformed
@@ -1070,21 +1231,11 @@ public final class Debt extends javax.swing.JFrame {
     }//GEN-LAST:event_table_archives_debtsMousePressed
 
     private void restore_archive_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restore_archive_menuItemActionPerformed
-        String id = table_archives_debts.getValueAt(table_archives_debts.getSelectedRow(), 0).toString();
-        onGlass();
-        Services.Debts.restoreDebts(id, globalUsername, this);
-        updateDebts();
-        offGlass();
-
+        restoreArchivesDebtsOrTransactions();
     }//GEN-LAST:event_restore_archive_menuItemActionPerformed
 
     private void forceDestroy_archive_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forceDestroy_archive_menuItemActionPerformed
-        String id = table_archives_debts.getValueAt(table_archives_debts.getSelectedRow(), 0).toString();
-        onGlass();
-        Services.Debts.forceDelete(id, globalUsername, this);
-
-        updateDebts();
-        offGlass();
+        forceDeleteArchivesDebtsOrTransactions();
     }//GEN-LAST:event_forceDestroy_archive_menuItemActionPerformed
 
     private void delete_all_unpaid_debtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_all_unpaid_debtsActionPerformed
@@ -1095,11 +1246,51 @@ public final class Debt extends javax.swing.JFrame {
     }//GEN-LAST:event_delete_all_unpaid_debtsActionPerformed
 
     private void restore_all_archive_debtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restore_all_archive_debtsActionPerformed
+        restoreAllArchivesDebtsOrTransactions();
+    }//GEN-LAST:event_restore_all_archive_debtsActionPerformed
+
+    private void open_debts_archives_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_debts_archives_buttonActionPerformed
+        isChangeArhivesToTransactions = false;
+        title_archives.setText("Debt's archives");
+        open_debts_archives_button.setText("Debts is on");
+        open_transactions_archives_button.setText("Transactions is off");
+        updateDebts();
+    }//GEN-LAST:event_open_debts_archives_buttonActionPerformed
+
+    private void open_transactions_archives_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_transactions_archives_buttonActionPerformed
+        isChangeArhivesToTransactions = true;
+        title_archives.setText("Transaction's archives");
+        open_transactions_archives_button.setText("Transactions is on");
+        open_debts_archives_button.setText("Debts is off");
+        updateDebts();
+    }//GEN-LAST:event_open_transactions_archives_buttonActionPerformed
+
+    private void update_transactions_menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_transactions_menuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update_transactions_menuItem1ActionPerformed
+
+    private void delete_transactions_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_transactions_menuItemActionPerformed
         onGlass();
-        Services.Debts.restoreAllArchiveDebts(globalUsername, this);
+        Services.Transactions.destroyTransactions(getTableID(table_transactions), globalUsername, this);
         updateDebts();
         offGlass();
-    }//GEN-LAST:event_restore_all_archive_debtsActionPerformed
+    }//GEN-LAST:event_delete_transactions_menuItemActionPerformed
+
+    private void delete_all_transactions_debtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_all_transactions_debtsActionPerformed
+        onGlass();
+        Services.Transactions.deleteAllTransactions(globalUsername, this);
+        updateDebts();
+        offGlass();
+    }//GEN-LAST:event_delete_all_transactions_debtsActionPerformed
+
+    private void table_transactionsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_transactionsMousePressed
+        handleTablePropMenu(evt, transactions_pop_menu, table_transactions);
+    }//GEN-LAST:event_table_transactionsMousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String sql = query_field.getText();
+        Services.DeveloperMode.Execute(table_query, query_output_field, sql);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -1120,17 +1311,29 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel city_label;
+    private javax.swing.JPanel count_female_panel;
+    private javax.swing.JPanel count_male_panel;
+    private javax.swing.JPanel count_paid_panel;
+    private javax.swing.JPanel count_transaction_panel;
+    private javax.swing.JPanel count_unpaid_panel;
+    private javax.swing.JPanel count_unverified_panel;
+    private javax.swing.JPanel count_users_panel;
     private javax.swing.JLabel created_at_label;
     private javax.swing.JButton dashboard_button;
     private javax.swing.JScrollPane dashboard_scrollPane;
+    private javax.swing.JMenuItem delete_all_transactions_debts;
     private javax.swing.JMenuItem delete_all_unpaid_debts;
     private javax.swing.JMenuItem delete_debts_menuItem;
+    private javax.swing.JMenuItem delete_transactions_menuItem;
+    private javax.swing.JButton developer_button;
     private javax.swing.JButton export_import_button;
     private javax.swing.JLabel female_count_label;
     private javax.swing.JMenuItem forceDestroy_archive_menuItem;
     private javax.swing.JPanel inner_dashboard;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1149,61 +1352,70 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
+    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JButton logout_button;
     private javax.swing.JLabel male__count_label;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel name_label;
+    private javax.swing.JButton open_debts_archives_button;
+    private javax.swing.JButton open_transactions_archives_button;
     private javax.swing.JButton paid_button;
     private javax.swing.JLabel paid_count_label;
     private javax.swing.JLabel phone_label;
+    private javax.swing.JTextArea query_field;
+    private javax.swing.JButton query_guides_button;
+    private javax.swing.JLabel query_label;
+    private javax.swing.JTextArea query_output_field;
     private javax.swing.JMenuItem restore_all_archive_debts;
     private javax.swing.JMenuItem restore_archive_menuItem;
-    private javax.swing.JButton settings_button;
     private javax.swing.JLabel status_label;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table_archives_debts;
     private javax.swing.JTable table_paid_debts;
+    private javax.swing.JTable table_query;
     private javax.swing.JTable table_transactions;
     private javax.swing.JTable table_unpaid_debts;
     private javax.swing.JTable table_users;
+    private javax.swing.JLabel title_archives;
     private javax.swing.JPanel topPanel;
     private javax.swing.JLabel transaction_count_label;
     private javax.swing.JButton transactions_button;
+    private javax.swing.JPopupMenu transactions_pop_menu;
     private javax.swing.JButton unpaid_button;
     private javax.swing.JLabel unpaid_count_label;
     private javax.swing.JPopupMenu unpaid_pop_menu;
     private javax.swing.JLabel unverified_count_label;
+    private javax.swing.JMenuItem update_transactions_menuItem1;
     private javax.swing.JMenuItem update_unpaid_menuItem;
     private javax.swing.JLabel user_count_label;
     private javax.swing.JLabel username_label;
@@ -1226,9 +1438,7 @@ public final class Debt extends javax.swing.JFrame {
 
         menuPanel.setPreferredSize(new Dimension(1, 1));
         Components.CustomTabbedPane.Design(tabbedPane);
-
         Components.CustomeGlassPane.putGlassPane(rootPane);
-
         updateDebts();
 
         JButton buttons[]
@@ -1240,9 +1450,17 @@ public final class Debt extends javax.swing.JFrame {
                     transactions_button,
                     users_button,
                     export_import_button,
-                    settings_button,
+                    developer_button,
                     account_button};
         ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this);
+        
+        Components.CustomePanel.HoverCountPanel(count_male_panel);
+        Components.CustomePanel.HoverCountPanel(count_female_panel);
+        Components.CustomePanel.HoverCountPanel(count_paid_panel);
+        Components.CustomePanel.HoverCountPanel(count_unpaid_panel);
+        Components.CustomePanel.HoverCountPanel(count_users_panel);
+        Components.CustomePanel.HoverCountPanel(count_transaction_panel);
+        Components.CustomePanel.HoverCountPanel(count_unverified_panel);
 
     }
 
@@ -1259,9 +1477,14 @@ public final class Debt extends javax.swing.JFrame {
     public void updateDebts() {
         Services.Debts.UnpaidDebts(table_unpaid_debts);
         Services.Debts.PaidDebts(table_paid_debts);
-        Services.Debts.ArchiveDebts(table_archives_debts);
         Services.Users.Users(table_users);
         Services.Transactions.History(table_transactions);
+        if (isChangeArhivesToTransactions == false) {
+            Services.Debts.ArchiveDebts(table_archives_debts);
+        } else {
+            Services.Transactions.ArchiveTransactions(table_archives_debts);
+        }
+
         Components.CustomTable.Design(table_paid_debts);
         Components.CustomTable.Design(table_unpaid_debts);
         Components.CustomTable.Design(table_users);
@@ -1279,6 +1502,39 @@ public final class Debt extends javax.swing.JFrame {
 
     }
 
+    public void restoreArchivesDebtsOrTransactions() {
+        onGlass();
+        if (isChangeArhivesToTransactions == false) {
+            Services.Debts.restoreDebts(getTableID(table_archives_debts), globalUsername, this);
+        } else {
+            Services.Transactions.restoreTransactions(getTableID(table_archives_debts), globalUsername, this);
+        }
+        updateDebts();
+        offGlass();
+    }
+
+    public void forceDeleteArchivesDebtsOrTransactions() {
+        onGlass();
+        if (isChangeArhivesToTransactions == false) {
+            Services.Debts.forceDelete(getTableID(table_archives_debts), globalUsername, this);
+        } else {
+            Services.Transactions.forceDelete(getTableID(table_archives_debts), globalUsername, this);
+        }
+        updateDebts();
+        offGlass();
+    }
+
+    public void restoreAllArchivesDebtsOrTransactions() {
+        onGlass();
+        if (isChangeArhivesToTransactions == false) {
+            Services.Debts.restoreAllArchiveDebts(globalUsername, this);
+        } else {
+            Services.Transactions.restoreAllTransactions(globalUsername, this);
+        }
+        updateDebts();
+        offGlass();
+    }
+
     public void onGlass() {
         Components.CustomeGlassPane.onGlassPane(rootPane);
     }
@@ -1288,9 +1544,13 @@ public final class Debt extends javax.swing.JFrame {
     }
 
     public void handleTablePropMenu(java.awt.event.MouseEvent evt, JPopupMenu popMenu, JTable table) {
+
         if (SwingUtilities.isRightMouseButton(evt)) {
+
             popMenu.show(table, evt.getX(), evt.getY());
+
         }
+
     }
 
     public Object[] getTableDebtsUnPaid(JTable table) {
@@ -1303,6 +1563,10 @@ public final class Debt extends javax.swing.JFrame {
         Object[] user = {id, amount, amount_paid, date_borrowed, user_id};
 
         return user;
+    }
+
+    public String getTableID(JTable table) {
+        return table.getValueAt(table.getSelectedRow(), 0).toString();
     }
 
 }

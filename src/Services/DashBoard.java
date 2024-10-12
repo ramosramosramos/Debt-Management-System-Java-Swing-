@@ -34,7 +34,7 @@ public class DashBoard {
                     + "COUNT(CASE WHEN users.phone_verified_at IS NULL THEN 1 END) AS 'unverified',"
                     + "count(case when users.gender ='Male' then 1 end) as 'male', "
                     + "count(case when users.gender ='Female' then 1 end) as 'female' ,"
-                    + "count(case when debts.status='Uncomplete' then 1 end ) as 'unpaid',"
+                    + "count(case when debts.status='Uncomplete' and deleted_at ='null' then 1 end ) as 'unpaid',"
                     + "count(case when debts.status='Fully paid' then 1 end ) as 'paid'"
                     + "FROM users  join debts on users.id = debts.user_id WHERE role = 'customer'");
 

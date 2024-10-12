@@ -23,6 +23,7 @@ public class CustomeGlassPane {
 
                 g.setColor(new Color(0, 0, 0, 200));
                 g.fillRect(0, 0, getWidth(), getHeight());
+                
             }
 
         });

@@ -101,7 +101,7 @@ public final class Register extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 102, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 153, 0));
         jLabel1.setText("DEBT COMPANY");
         jPanel3.add(jLabel1);
 
@@ -375,6 +375,7 @@ public final class Register extends javax.swing.JFrame {
         address_label1.setPreferredSize(new java.awt.Dimension(400, 30));
         jPanel28.add(address_label1);
 
+        register_button.setBackground(new java.awt.Color(0, 153, 0));
         register_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         register_button.setText("Register");
         register_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -525,36 +526,51 @@ public final class Register extends javax.swing.JFrame {
             error_city_label.setText("City is required");
             error_address.setText("Address is required");
             error_phone_label.setText("Phone number is required");
+            Components.CustomeField.DesignErrorField(name_field);
+            Components.CustomeField.DesignErrorField(username_field);
+            Components.CustomeField.DesignErrorField(password_field);
+            Components.CustomeField.DesignErrorField(confirm_password_field);
+
+            Components.CustomeField.DesignErrorField(city_field);
+            Components.CustomeField.DesignErrorField(address_field);
+            Components.CustomeField.DesignErrorField(phone_number_field);
             return;
         }
 
         if (name.isEmpty()) {
             error_name_label.setText("Name is required");
+            Components.CustomeField.DesignErrorField(name_field);
             return;
         }
         if (username.isEmpty()) {
             error_username_label.setText("Username is required");
+            Components.CustomeField.DesignErrorField(username_field);
             return;
         }
         if (Tools.Validator.isValidUsername(username) == false) {
             error_username_label.setText("Not a valid username, please add some numbers");
+            Components.CustomeField.DesignErrorField(username_field);
             return;
         }
         if (ServiceMethod.CheckUnique.username(username) == true) {
             error_username_label.setText("This username is already exists,please try another");
+            Components.CustomeField.DesignErrorField(username_field);
             return;
         }
 
         if (password.isEmpty()) {
             error_password_label.setText("Password is required");
+            Components.CustomeField.DesignErrorField(password_field);
             return;
         }
         if (confirm_password.isEmpty()) {
             error_confirm_pasword_label.setText("Password confirmation is required");
+            Components.CustomeField.DesignErrorField(confirm_password_field);
             return;
         }
         if (!password.equals(confirm_password)) {
             error_password_label.setText("Password does not match");
+            Components.CustomeField.DesignErrorField(password_field);
             return;
         }
         if (gender.contains("Select none")) {
@@ -563,18 +579,22 @@ public final class Register extends javax.swing.JFrame {
         }
         if (city.isEmpty()) {
             error_city_label.setText("City is required");
+            Components.CustomeField.DesignErrorField(city_field);
             return;
         }
         if (address.isEmpty()) {
             error_address.setText("Address is required");
+            Components.CustomeField.DesignErrorField(address_field);
             return;
         }
         if (phone.isEmpty()) {
             error_phone_label.setText("Phone number is required");
+            Components.CustomeField.DesignErrorField(phone_number_field);
             return;
         }
         if (ServiceMethod.CheckUnique.phone(phone) == true) {
             error_phone_label.setText("Phone number is already exist,please try another");
+            Components.CustomeField.DesignErrorField(phone_number_field);
             return;
         }
         if (Integer.valueOf(age) < 18) {

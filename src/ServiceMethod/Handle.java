@@ -75,7 +75,7 @@ public class Handle {
                     } else if (buttonText.contains("archives")) {
                         tabbedPane.setSelectedIndex(6);
                         buttons[6].setBackground(new Color(51, 51, 51));
-                    } else if (buttonText.contains("settings")) {
+                    } else if (buttonText.contains("developer")) {
                         tabbedPane.setSelectedIndex(7);
                         buttons[7].setBackground(new Color(51, 51, 51));
                     } else if (buttonText.contains("account")) {
@@ -94,7 +94,7 @@ public class Handle {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                link_label.setForeground(new Color(255, 102, 0));
+                link_label.setForeground(new Color(0,153,0));
             }
 
             @Override
@@ -112,6 +112,7 @@ public class Handle {
             @Override
             public void focusGained(FocusEvent e) {
                 error.setText("");
+                Components.CustomeField.RemoveDesignErrorField(field);
             }
 
         });
@@ -124,6 +125,7 @@ public class Handle {
             @Override
             public void focusGained(FocusEvent e) {
                 error.setText("");
+                
             }
 
         });

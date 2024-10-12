@@ -55,6 +55,7 @@ public class AddCutomerPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(900, 500));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        proceed_button.setBackground(new java.awt.Color(0, 153, 0));
         proceed_button.setText("Proceed");
         proceed_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
