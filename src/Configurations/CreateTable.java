@@ -25,7 +25,7 @@ public class CreateTable {
                 create_table_users.close();
             }
 
-            System.out.println("Created users table");
+//            System.out.println("Created users table");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -48,7 +48,7 @@ public class CreateTable {
                 create_table_debts.close();
             }
 
-            System.out.println("Created table debts");
+//            System.out.println("Created table debts");
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -67,7 +67,7 @@ public class CreateTable {
                 create_table_validations.execute();
                 create_table_validations.close();
             }
-            System.out.println("Created table validations");
+//            System.out.println("Created table validations");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -88,9 +88,9 @@ public class CreateTable {
                     + "foreign key (debt_id) references debts(id) on delete cascade )")) {
                 create_table_transactions.execute();
                 create_table_transactions.close();
-                
+
             }
-            System.out.println("Created table transactions");
+//            System.out.println("Created table transactions");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

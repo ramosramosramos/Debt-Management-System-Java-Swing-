@@ -11,7 +11,7 @@ public class Database {
                 create_database.execute();
                 create_database.close();
             }
-            System.out.println("Created debt_database");
+//            System.out.println("Created debt_database");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

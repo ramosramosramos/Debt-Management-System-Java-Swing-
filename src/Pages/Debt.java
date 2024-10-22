@@ -1,7 +1,9 @@
 package Pages;
 
+import static ServiceMethod.Handle.debt;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import javax.swing.JButton;
 
@@ -17,6 +19,7 @@ public final class Debt extends javax.swing.JFrame {
     String IP_ADDRESS = null;
     Pages.Account details;
     boolean isChangeArhivesToTransactions = false;
+    String password = "";
 
     public Debt(String username) {
         initComponents();
@@ -54,6 +57,7 @@ public final class Debt extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         menu_button = new Components.CustomButton(this);
+        shortcut_field = new javax.swing.JTextField();
         bottomPanel = new javax.swing.JPanel();
         menuPanel = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
@@ -135,8 +139,12 @@ public final class Debt extends javax.swing.JFrame {
         query_field = new javax.swing.JTextArea();
         query_label = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
-        query_guides_button = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanel21 = new javax.swing.JPanel();
+        execute_user_button = new javax.swing.JButton();
+        execute_debts_button = new javax.swing.JButton();
+        execute_transaction_button = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        execute_button = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         table_query = new javax.swing.JTable();
@@ -255,6 +263,15 @@ public final class Debt extends javax.swing.JFrame {
             }
         });
         topPanel.add(menu_button);
+
+        shortcut_field.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        shortcut_field.setPreferredSize(new java.awt.Dimension(200, 30));
+        shortcut_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                shortcut_fieldKeyReleased(evt);
+            }
+        });
+        topPanel.add(shortcut_field);
 
         background.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -1005,7 +1022,13 @@ public final class Debt extends javax.swing.JFrame {
         jPanel31.setLayout(new java.awt.BorderLayout());
 
         query_field.setColumns(20);
+        query_field.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         query_field.setRows(5);
+        query_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                query_fieldKeyPressed(evt);
+            }
+        });
         jScrollPane8.setViewportView(query_field);
 
         jPanel31.add(jScrollPane8, java.awt.BorderLayout.CENTER);
@@ -1015,39 +1038,57 @@ public final class Debt extends javax.swing.JFrame {
         jPanel31.add(query_label, java.awt.BorderLayout.PAGE_START);
 
         jPanel19.setPreferredSize(new java.awt.Dimension(150, 162));
+        jPanel19.setLayout(new java.awt.BorderLayout());
 
-        query_guides_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        query_guides_button.setText("Guides");
-
-        jButton2.setBackground(new java.awt.Color(0, 153, 0));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton2.setText("Execute");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        execute_user_button.setBackground(new java.awt.Color(0, 153, 0));
+        execute_user_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        execute_user_button.setText("Users");
+        execute_user_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        execute_user_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                execute_user_buttonActionPerformed(evt);
             }
         });
+        jPanel21.add(execute_user_button);
 
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(query_guides_button))
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addComponent(query_guides_button, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        execute_debts_button.setBackground(new java.awt.Color(0, 153, 0));
+        execute_debts_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        execute_debts_button.setText("Debts");
+        execute_debts_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        execute_debts_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                execute_debts_buttonActionPerformed(evt);
+            }
+        });
+        jPanel21.add(execute_debts_button);
+
+        execute_transaction_button.setBackground(new java.awt.Color(0, 153, 0));
+        execute_transaction_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        execute_transaction_button.setText("Transactions");
+        execute_transaction_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        execute_transaction_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                execute_transaction_buttonActionPerformed(evt);
+            }
+        });
+        jPanel21.add(execute_transaction_button);
+
+        jLabel11.setPreferredSize(new java.awt.Dimension(100, 10));
+        jPanel21.add(jLabel11);
+
+        execute_button.setBackground(new java.awt.Color(0, 153, 0));
+        execute_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        execute_button.setText("Execute");
+        execute_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        execute_button.setPreferredSize(new java.awt.Dimension(120, 35));
+        execute_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                execute_buttonActionPerformed(evt);
+            }
+        });
+        jPanel21.add(execute_button);
+
+        jPanel19.add(jPanel21, java.awt.BorderLayout.CENTER);
 
         jPanel31.add(jPanel19, java.awt.BorderLayout.LINE_END);
 
@@ -1190,10 +1231,7 @@ public final class Debt extends javax.swing.JFrame {
     }//GEN-LAST:event_logout_buttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        onGlass();
-        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(globalUsername, IP_ADDRESS), "Add Customer", JOptionPane.DEFAULT_OPTION);
-        offGlass();
-        updateDebts();
+      addCustomer();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -1287,10 +1325,49 @@ public final class Debt extends javax.swing.JFrame {
         handleTablePropMenu(evt, transactions_pop_menu, table_transactions);
     }//GEN-LAST:event_table_transactionsMousePressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String sql = query_field.getText();
-        Services.DeveloperMode.Execute(table_query, query_output_field, sql);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void query_fieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_query_fieldKeyPressed
+        if (evt.isControlDown() && evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            ExecuteQuery();
+        }
+    }//GEN-LAST:event_query_fieldKeyPressed
+
+    private void execute_user_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_execute_user_buttonActionPerformed
+        ExecuteVerify();
+        Services.DeveloperMode.SelectUsers(table_query, query_output_field);
+    }//GEN-LAST:event_execute_user_buttonActionPerformed
+
+    private void execute_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_execute_buttonActionPerformed
+        ExecuteQuery();
+    }//GEN-LAST:event_execute_buttonActionPerformed
+
+    private void execute_debts_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_execute_debts_buttonActionPerformed
+        ExecuteVerify();
+        Services.DeveloperMode.SelectDebts(table_query, query_output_field);
+    }//GEN-LAST:event_execute_debts_buttonActionPerformed
+
+    private void execute_transaction_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_execute_transaction_buttonActionPerformed
+        ExecuteVerify();
+        Services.DeveloperMode.SelectTransactions(table_query, query_output_field);
+    }//GEN-LAST:event_execute_transaction_buttonActionPerformed
+
+    private void shortcut_fieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_shortcut_fieldKeyReleased
+
+        if (shortcut_field.getText().toLowerCase().contains("logout")) {
+            logout();
+            return;
+        }
+        if (shortcut_field.getText().toLowerCase().contains("add customer")) {
+         addCustomer();
+            return;
+        }
+        if (shortcut_field.getText().toLowerCase().contains("register")) {
+            if (askByShortcut("Are you sure you will be directed to register form?", "Meta Debt")) {
+                new Pages.Authentication.Register().setVisible(true);
+                dispose();
+
+            }
+        }
+    }//GEN-LAST:event_shortcut_fieldKeyReleased
 
     public static void main(String args[]) {
         FlatMacDarkLaf.setup();
@@ -1326,14 +1403,18 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JMenuItem delete_debts_menuItem;
     private javax.swing.JMenuItem delete_transactions_menuItem;
     private javax.swing.JButton developer_button;
+    private javax.swing.JButton execute_button;
+    private javax.swing.JButton execute_debts_button;
+    private javax.swing.JButton execute_transaction_button;
+    private javax.swing.JButton execute_user_button;
     private javax.swing.JButton export_import_button;
     private javax.swing.JLabel female_count_label;
     private javax.swing.JMenuItem forceDestroy_archive_menuItem;
     private javax.swing.JPanel inner_dashboard;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1355,6 +1436,7 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel28;
@@ -1393,11 +1475,11 @@ public final class Debt extends javax.swing.JFrame {
     private javax.swing.JLabel paid_count_label;
     private javax.swing.JLabel phone_label;
     private javax.swing.JTextArea query_field;
-    private javax.swing.JButton query_guides_button;
     private javax.swing.JLabel query_label;
     private javax.swing.JTextArea query_output_field;
     private javax.swing.JMenuItem restore_all_archive_debts;
     private javax.swing.JMenuItem restore_archive_menuItem;
+    private javax.swing.JTextField shortcut_field;
     private javax.swing.JLabel status_label;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table_archives_debts;
@@ -1440,7 +1522,18 @@ public final class Debt extends javax.swing.JFrame {
         Components.CustomTabbedPane.Design(tabbedPane);
         Components.CustomeGlassPane.putGlassPane(rootPane);
         updateDebts();
+        MenuPanelButtons();
+        Components.CustomePanel.HoverCountPanel(count_male_panel);
+        Components.CustomePanel.HoverCountPanel(count_female_panel);
+        Components.CustomePanel.HoverCountPanel(count_paid_panel);
+        Components.CustomePanel.HoverCountPanel(count_unpaid_panel);
+        Components.CustomePanel.HoverCountPanel(count_users_panel);
+        Components.CustomePanel.HoverCountPanel(count_transaction_panel);
+        Components.CustomePanel.HoverCountPanel(count_unverified_panel);
 
+    }
+
+    public void MenuPanelButtons() {
         JButton buttons[]
                 = {
                     dashboard_button,
@@ -1452,26 +1545,24 @@ public final class Debt extends javax.swing.JFrame {
                     export_import_button,
                     developer_button,
                     account_button};
-        ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this);
-        
-        Components.CustomePanel.HoverCountPanel(count_male_panel);
-        Components.CustomePanel.HoverCountPanel(count_female_panel);
-        Components.CustomePanel.HoverCountPanel(count_paid_panel);
-        Components.CustomePanel.HoverCountPanel(count_unpaid_panel);
-        Components.CustomePanel.HoverCountPanel(count_users_panel);
-        Components.CustomePanel.HoverCountPanel(count_transaction_panel);
-        Components.CustomePanel.HoverCountPanel(count_unverified_panel);
-
+        ServiceMethod.Handle.HoverAndSelectTabbePane(buttons, tabbedPane, this, shortcut_field);
     }
 
-    void logout() {
-        onGlass();
-        int logout = JOptionPane.showConfirmDialog(null, "Are you sure?", "Logout", JOptionPane.YES_NO_OPTION);
-        if (logout == JOptionPane.YES_OPTION) {
+    public void logout() {
+
+        if (askByShortcut("Are you sure?", "Logout")) {
             new Pages.Authentication.Login().setVisible(true);
             dispose();
         }
+
+    }
+
+    boolean askByShortcut(String message, String title) {
+        onGlass();
+        int logout = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
         offGlass();
+        return logout == JOptionPane.YES_OPTION;
+
     }
 
     public void updateDebts() {
@@ -1567,6 +1658,39 @@ public final class Debt extends javax.swing.JFrame {
 
     public String getTableID(JTable table) {
         return table.getValueAt(table.getSelectedRow(), 0).toString();
+    }
+
+    public void ExecuteQuery() {
+        onGlass();
+        ExecuteVerify();
+        String sql = query_field.getText();
+        Services.DeveloperMode.Execute(table_query, query_output_field, sql);
+        offGlass();
+    }
+
+    public void ExecuteVerify() {
+        onGlass();
+        if (password.isEmpty()) {
+            String getAuthPassword = JOptionPane.showInputDialog("Enter password");
+
+            if (!Tools.Password.hashPassword(getAuthPassword).equals(details.password)) {
+                password = "";
+                JOptionPane.showMessageDialog(null, "Invalid password");
+                offGlass();
+                return;
+            }
+            password = Tools.Password.hashPassword(getAuthPassword);
+
+        }
+
+        offGlass();
+    }
+
+    public void addCustomer() {
+        onGlass();
+        JOptionPane.showMessageDialog(null, new Panels.AddCutomerPanel(globalUsername, IP_ADDRESS), "Add Customer", JOptionPane.DEFAULT_OPTION);
+        offGlass();
+        updateDebts();
     }
 
 }
