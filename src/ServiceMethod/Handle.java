@@ -7,7 +7,7 @@ package ServiceMethod;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
@@ -98,8 +98,10 @@ public class Handle {
     private static void selectTab(int tabIndex, JButton[] buttons, JTabbedPane tabbedPane, JFrame frame) {
         for (JButton btn : buttons) {
             btn.setBackground(frame.getBackground());
+            btn.setForeground(new Color(240,240,240));
         }
         buttons[tabIndex].setBackground(new Color(51, 51, 51));
+        buttons[tabIndex].setForeground(new Color(255,102,0));
         tabbedPane.setSelectedIndex(tabIndex);
     }
 
@@ -108,7 +110,7 @@ public class Handle {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                link_label.setForeground(new Color(0, 153, 0));
+                link_label.setForeground(new Color(255,102,0));
             }
 
             @Override

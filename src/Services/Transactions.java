@@ -125,7 +125,7 @@ public class Transactions {
                 pst.setString(1, id);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Transaction is permanently deleted");
-                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+                Message.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
                 
             } else {
                 InvalidPassword();
@@ -150,7 +150,7 @@ public class Transactions {
                 pst.setString(2, "null");
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Successfully move all to archives");
-                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+                Message.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
             } else {
                 InvalidPassword();
             }
@@ -175,7 +175,7 @@ public class Transactions {
                 pst.setString(2, "null");
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "All transactions in archives has been restored.");
-                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+                Message.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
             } else {
                 InvalidPassword();
             }

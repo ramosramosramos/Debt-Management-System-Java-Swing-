@@ -16,8 +16,17 @@ public class Manage {
                 + "User ID:" + user_id + ", "
                 + "Amount: " + amount + ", "
                 + "time: " + date;
-
+        String MESSAGEBORROWER = "Hello user,Thank you for borrowing in our company:"
+                + "Amount: " + amount + ", "
+                + "time: " + date;
+        String BorrowerPhone = "";
         try {
+            PreparedStatement pstGetBorrowersNumber = conn.prepareCall("select phone from users where id =?");
+            pstGetBorrowersNumber.setString(1, user_id);
+            ResultSet borrower = pstGetBorrowersNumber.executeQuery();
+            if(borrower.next()){
+                BorrowerPhone =borrower.getString("phone");
+            }
             PreparedStatement insertDebts
                     = conn.prepareStatement("Insert into debts(user_id,amount,amount_paid,created_at)values(?,?,?,?)");
 
@@ -35,7 +44,9 @@ public class Manage {
             insertValidations.setString(4, date);
             insertValidations.executeUpdate();
             success_label.setText("Successfully added.");
-            Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, true);
+
+            Message.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, true);
+            Message.Alert.Borrower(IP_ADDRESS,BorrowerPhone, MESSAGEBORROWER, false);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -63,7 +74,7 @@ public class Manage {
             updateDebts.executeUpdate();
 
             success_label.setText("Successfully updated.");
-            Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, true);
+            Message.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, true);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -80,7 +91,7 @@ public class Manage {
                 + "Amount paid: " + amount_paid + ", "
                 + "Balance:" + balance + ", "
                 + "Time: " + date;
-        Notifications.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, false);
+        Message.Alert.Admin(IP_ADDRESS, SEND_TO, MESSAGE, false);
 
         try {
             PreparedStatement pst = conn.prepareStatement("Insert into transactions(user_id,debt_id,amount_paid,balance,created_at)"

@@ -149,7 +149,7 @@ public class Debts {
                 pst.setString(1, id);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Permanently deleted");
-                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+                Message.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
 
             } else {
                 InvalidPassword();
@@ -174,7 +174,7 @@ public class Debts {
                 pst.setString(2, "Uncomplete");
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Successfully move all to archives");
-                Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+                Message.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
             } else {
                 InvalidPassword();
             }
@@ -200,7 +200,7 @@ public class Debts {
                 pst.setString(2, "null");
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "All debt's customer in archives has been restored.");
-                   Notifications.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
+                   Message.Alert.Admin(Tools.IP.getIPAddress(), account.getPhone(), MESSAGE, true);
             } else {
                 InvalidPassword();
             }

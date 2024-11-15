@@ -5,6 +5,8 @@
  */
 package Panels;
 
+import raven.toast.Notifications;
+
 /**
  *
  * @author User
@@ -21,6 +23,7 @@ public class AddCutomerPanel extends javax.swing.JPanel {
         
         String date = Tools.Date.getDate();
         expiration_label.setText("Expiration date(Valid ID) '" + date + "'");
+        Notifications.getInstance().setJFrame(null);
         
     
    
@@ -182,6 +185,7 @@ public class AddCutomerPanel extends javax.swing.JPanel {
             error_amount.setText("Amount is required");
             errror_valid_id.setText("Type of Valid ID is required");
             error_expiration_date.setText("Expiration date of ID is required");
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Please fill all the required fields");
             return;
 
         }

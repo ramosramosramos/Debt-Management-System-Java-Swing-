@@ -9,6 +9,7 @@ public class Account {
     static Connection conn = Configurations.JavaConnection.getConnection();
 
     String name;
+    String id;
     String phone;
     String city;
     String address;
@@ -29,6 +30,7 @@ public class Account {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
+                id = rs.getString("id");
                 name = rs.getString("name");
                 phone = rs.getString("phone");
                 city = rs.getString("city");
@@ -47,6 +49,14 @@ public class Account {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

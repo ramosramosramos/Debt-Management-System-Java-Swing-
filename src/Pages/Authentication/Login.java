@@ -1,12 +1,8 @@
 package Pages.Authentication;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-import com.formdev.flatlaf.ui.FlatBorder;
-import com.formdev.flatlaf.ui.FlatListCellBorder;
-import java.awt.Color;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
-import javax.swing.plaf.BorderUIResource;
+
+import raven.toast.Notifications;
 
 public class Login extends javax.swing.JFrame {
 
@@ -15,7 +11,7 @@ public class Login extends javax.swing.JFrame {
         ServiceMethod.Handle.resetErrorField(username_field, error_username_label);
         ServiceMethod.Handle.resetErrorField(password_field, error_password_label);
         ServiceMethod.Handle.HoverLink(link_label);
-
+        Notifications.getInstance().setJFrame(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,9 +41,9 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setText("DEBT COMPANY");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 180, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 180, 30));
 
         getContentPane().add(jPanel1);
 
@@ -101,9 +97,9 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2);
 
-        login_button.setBackground(new java.awt.Color(0, 153, 0));
+        login_button.setBackground(new java.awt.Color(255, 102, 0));
         login_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        login_button.setText("Login");
+        login_button.setText("Continue");
         login_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         login_button.setPreferredSize(new java.awt.Dimension(350, 40));
         login_button.addActionListener(new java.awt.event.ActionListener() {
@@ -175,26 +171,29 @@ public class Login extends javax.swing.JFrame {
         String password = new String(password_field.getPassword()).trim();
 
         if (username.isEmpty() && password.isEmpty()) {
-            error_username_label.setText("Username is required");
-            error_password_label.setText("Password is required");
+             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Username and password is required");
+    
             Components.CustomeField.DesignErrorField(username_field);
             Components.CustomeField.DesignErrorField(password_field);
             return;
         }
         if (username.isEmpty()) {
-            error_username_label.setText("Username is required");
+//            error_username_label.setText("Username is required");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Username is required");
             Components.CustomeField.DesignErrorField(username_field);
             return;
 
         }
         if (password.isEmpty()) {
-            error_password_label.setText("Password is required");
+        
+              Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Password is required");
             Components.CustomeField.DesignErrorField(password_field);
             return;
 
         }
+            
         if (Controllers.LoginController.authenticate(username, password, error_username_label)) {
-            new Pages.Debt(username).setVisible(true);
+         
             dispose();
         }
 

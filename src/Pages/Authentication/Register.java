@@ -1,12 +1,14 @@
 package Pages.Authentication;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import raven.toast.Notifications;
 
 public final class Register extends javax.swing.JFrame {
 
     public Register() {
         initComponents();
         designComponents();
+        Notifications.getInstance().setJFrame(this);
 
     }
 
@@ -101,7 +103,7 @@ public final class Register extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setText("DEBT COMPANY");
         jPanel3.add(jLabel1);
 
@@ -362,6 +364,7 @@ public final class Register extends javax.swing.JFrame {
 
         jPanel27.add(error_panel4);
 
+        gender_field.setBackground(new java.awt.Color(51, 51, 51));
         gender_field.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         gender_field.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select none", "Male", "Female", " " }));
         jPanel27.add(gender_field);
@@ -375,9 +378,9 @@ public final class Register extends javax.swing.JFrame {
         address_label1.setPreferredSize(new java.awt.Dimension(400, 30));
         jPanel28.add(address_label1);
 
-        register_button.setBackground(new java.awt.Color(0, 153, 0));
+        register_button.setBackground(new java.awt.Color(255, 102, 0));
         register_button.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        register_button.setText("Register");
+        register_button.setText("Create");
         register_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         register_button.setPreferredSize(new java.awt.Dimension(400, 40));
         register_button.addActionListener(new java.awt.event.ActionListener() {
@@ -519,13 +522,8 @@ public final class Register extends javax.swing.JFrame {
 
         if (name.isEmpty() && username.isEmpty() && password.isEmpty() && gender.equals("Select none") && city.isEmpty()
                 && address.isEmpty() && phone.isEmpty()) {
-            error_name_label.setText("Name is required");
-            error_username_label.setText("Username is required");
-            error_password_label.setText("Password is required");
-            error_gender_label.setText("Gender is required");
-            error_city_label.setText("City is required");
-            error_address.setText("Address is required");
-            error_phone_label.setText("Phone number is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Please fill all required fields");
             Components.CustomeField.DesignErrorField(name_field);
             Components.CustomeField.DesignErrorField(username_field);
             Components.CustomeField.DesignErrorField(password_field);
@@ -538,76 +536,87 @@ public final class Register extends javax.swing.JFrame {
         }
 
         if (name.isEmpty()) {
-            error_name_label.setText("Name is required");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Name is required");
+
             Components.CustomeField.DesignErrorField(name_field);
             return;
         }
         if (username.isEmpty()) {
-            error_username_label.setText("Username is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Username is required");
             Components.CustomeField.DesignErrorField(username_field);
             return;
         }
         if (Tools.Validator.isValidUsername(username) == false) {
-            error_username_label.setText("Not a valid username, please add some numbers");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Not a valid username, please add some numbers");
             Components.CustomeField.DesignErrorField(username_field);
             return;
         }
         if (ServiceMethod.CheckUnique.username(username) == true) {
-            error_username_label.setText("This username is already exists,please try another");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "This username is already exists,please try another");
             Components.CustomeField.DesignErrorField(username_field);
             return;
         }
 
         if (password.isEmpty()) {
-            error_password_label.setText("Password is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Password is required");
             Components.CustomeField.DesignErrorField(password_field);
             return;
         }
         if (confirm_password.isEmpty()) {
-            error_confirm_pasword_label.setText("Password confirmation is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Password confirmation is required");
             Components.CustomeField.DesignErrorField(confirm_password_field);
             return;
         }
         if (!password.equals(confirm_password)) {
-            error_password_label.setText("Password does not match");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Password does not match");
             Components.CustomeField.DesignErrorField(password_field);
             return;
         }
         if (gender.contains("Select none")) {
-            error_gender_label.setText("Gender is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Gender is required");
             return;
         }
         if (city.isEmpty()) {
-            error_city_label.setText("City is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "City is required");
             Components.CustomeField.DesignErrorField(city_field);
             return;
         }
         if (address.isEmpty()) {
-            error_address.setText("Address is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Address is required");
             Components.CustomeField.DesignErrorField(address_field);
             return;
         }
         if (phone.isEmpty()) {
-            error_phone_label.setText("Phone number is required");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Phone number is required");
             Components.CustomeField.DesignErrorField(phone_number_field);
             return;
         }
         if (ServiceMethod.CheckUnique.phone(phone) == true) {
-            error_phone_label.setText("Phone number is already exist,please try another");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Phone number is already exist,please try another");
+
             Components.CustomeField.DesignErrorField(phone_number_field);
             return;
         }
         if (Integer.valueOf(age) < 18) {
-            error_age_label.setText("Only 18 years above is required");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Only 18 years above is required");
+
             return;
         }
         boolean isAllowed = Controllers.RegisterController.authenticate(name, username, password, gender, city, address, phone, age);
 
         if (isAllowed == true) {
-            new Pages.Debt(username).setVisible(true);
-            dispose();
-        } else {
-            error_username_label.setText("Invalid credentials");
+            clearFields();
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "         You are now successfully registerd         ");
         }
     }
 
@@ -623,4 +632,15 @@ public final class Register extends javax.swing.JFrame {
         ServiceMethod.Handle.resetErrorComboBox(gender_field, error_gender_label);
     }
 
+    void clearFields() {
+        name_field.setText("");
+        username_field.setText("");
+        password_field.setText("");
+        confirm_password_field.setText("");
+        gender_field.setSelectedItem("Select none");
+        city_field.setText("");
+        address_field.setText("");
+        phone_number_field.setText("");
+        age_field.setValue(18);
+    }
 }
